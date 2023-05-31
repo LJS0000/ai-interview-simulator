@@ -2,7 +2,7 @@
 
 이 프로젝트는 사용자가 질문에 대답하여 면접을 시뮬레이션할 수 있는 간단한 웹 페이지입니다! 라이브러리나 프레임워크 없이 Vanilla JavaScript, pure CSS, HTML을 사용해 구현했습니다.
 
-- [Interview Simulator 경험하기](https://)
+- [Interview Simulator 경험하기](https://ljs0000.github.io/ai-interview-simulator/)
 
 ## 1. 기술스택:
 
