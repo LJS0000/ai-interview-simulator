@@ -1,12 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+const dotenv = require('../module/dotenv.js');
 
-const dotenvPath = path.resolve(__dirname, '../../.env');
-const envVariables = fs.readFileSync(dotenvPath, 'utf-8').split('\n');
+// .env 파일에서 환경변수 로드
+dotenv.loadEnv();
 
-for (let i of envVariables) {
-  const [key, value] = i.split('=');
-  process.env[key] = value;
-}
-
-const AI_API = process.env.API_ENDPOINT;
+// API ENDPOINT
+const api = process.env.API_ENDPOINT;
