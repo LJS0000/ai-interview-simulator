@@ -12,8 +12,6 @@ export default function qaAPI() {
     },
   ];
 
-  console.log(qaData);
-
   fetch(API_ENDPOINT, {
     method: 'POST',
     headers: {

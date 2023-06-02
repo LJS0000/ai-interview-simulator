@@ -1,4 +1,4 @@
-import API_ENDPOINT from '../configs/apiConfigs';
+import API_ENDPOINT from '../configs/api-configs';
 
 export default function simAPI() {
   simData = [
@@ -20,8 +20,6 @@ export default function simAPI() {
         '다른 설명 없이 user 관심 분야의 예상 면접 질문 3개를 추천해주세요.',
     },
   ];
-
-  console.log(simData);
 
   fetch(API_ENDPOINT, {
     method: 'POST',
