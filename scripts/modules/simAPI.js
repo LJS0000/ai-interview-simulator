@@ -1,6 +1,6 @@
 let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-data = [
+simData = [
   {
     role: 'system',
     content: 'assistant는 면접관입니다.',
@@ -20,12 +20,14 @@ data = [
   },
 ];
 
+console.log(simData);
+
 fetch(url, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify(data),
+  body: JSON.stringify(simData),
   redirect: 'follow',
 })
   .then((res) => res.json())
