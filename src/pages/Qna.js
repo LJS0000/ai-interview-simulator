@@ -5,7 +5,7 @@ export default class Qna {
 
   render() {
     const qnaContainer = document.createElement('div');
-    qnaContainer.textContent = '질문하기 페이지';
+    qnaContainer.textContent = '질문 페이지';
     document.getElementById('content-container').appendChild(qnaContainer);
   }
 }

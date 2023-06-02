@@ -10,20 +10,17 @@ export default class App {
   }
 
   initialize() {
-    // 라우팅
+    // path에 따라 메인 컨텐츠 렌더링
     this.router.addRoute('/', () => {
       const qna = new Qna();
       qna.render();
     });
-
     this.router.addRoute('/simulation', () => {
       const simulation = new Simulation();
       simulation.render();
     });
-
     this.router.navigate();
 
-    // 헤더
     this.header.addMenuItem('질문하기', '/');
     this.header.addMenuItem('모의면접', '/simulation');
     this.header.render(document.getElementById('header-container'));

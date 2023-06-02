@@ -1,7 +1,6 @@
-class Router {
+export default class Router {
   constructor() {
     this.routes = [];
-    this.currentRoute = null;
   }
 
   addRoute(path, callback) {
@@ -17,9 +16,5 @@ class Router {
         return;
       }
     }
-
-    alert('404 - Page not found');
   }
 }
-
-export default Router;

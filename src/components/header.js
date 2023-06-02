@@ -11,20 +11,20 @@ export default class Header {
 
   init() {
     this.navbar.classList.add('navbar');
-    this.sidebarBtn.classList.add('sidebar-btn');
-    this.logo.classList.add('logo');
-    this.menu.classList.add('menu');
 
-    // 사이드바 토글을 위한 햄버거 메뉴
+    // 사이드바 햄버거 메뉴
+    this.sidebarBtn.classList.add('sidebar-btn');
     const drawerIcon = document.createElement('img');
     drawerIcon.src = './src/assets/images/icon-drawer.svg';
     this.sidebarBtn.appendChild(drawerIcon);
-
-    // 로고 겸 홈페이지 이동 버튼
+    // 헤더 로고
+    this.logo.classList.add('logo');
     const logoImg = document.createElement('img');
     logoImg.src = './src/assets/images/logo.svg';
     logoImg.alt = 'AI Interview Simulator';
     this.logo.appendChild(logoImg);
+    // 헤더 메뉴
+    this.menu.classList.add('menu');
 
     this.navbar.appendChild(this.sidebarBtn);
     this.navbar.appendChild(this.menu);
@@ -33,13 +33,27 @@ export default class Header {
 
   addMenuItem(label, url) {
     const menuItem = document.createElement('li');
-    const link = document.createElement('a');
-
     menuItem.classList.add('menu-item');
+
+    const link = document.createElement('a');
     link.textContent = label;
     link.href = url;
+
+    // static한 페이지를 만듭니다.
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (window.location.pathname === url) return;
+
+      // 클릭이벤트가 발생했을 때 주소를 변경하기 위한 코드
+      window.history.pushState(null, null, url);
+
+      this.render();
+    });
+
     menuItem.appendChild(link);
     this.menu.appendChild(menuItem);
+
     this.menuItems.push(menuItem);
   }
 
