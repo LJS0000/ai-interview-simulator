@@ -48,7 +48,7 @@ export default class Header {
       // 클릭이벤트가 발생했을 때 주소를 변경하기 위한 코드
       window.history.pushState(null, null, url);
 
-      this.render();
+      render();
     });
 
     menuItem.appendChild(link);
@@ -58,6 +58,7 @@ export default class Header {
   }
 
   render(parentElement) {
+    console.log(parentElement);
     parentElement.appendChild(this.navbar);
   }
 }
