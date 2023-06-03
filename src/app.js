@@ -23,11 +23,12 @@ export default class App {
     });
     this.router.navigate();
 
-    // 네브바 메뉴를 생성합니다.
+    // 네비게이션바
     this.header.addMenuItem('질문하기', '/');
     this.header.addMenuItem('모의면접', '/simulation');
     this.header.render(document.getElementById('header-container'));
 
-    // input을 생성합니다.
+    // 입력창
+    this.input.render(document.getElementById('main-container'));
   }
 }

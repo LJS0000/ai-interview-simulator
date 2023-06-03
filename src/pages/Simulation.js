@@ -6,8 +6,6 @@ export default class Simulation {
   render() {
     const simulationContainer = document.createElement('div');
     simulationContainer.textContent = '모의면접 페이지';
-    document
-      .getElementById('content-container')
-      .appendChild(simulationContainer);
+    document.getElementById('main-container').appendChild(simulationContainer);
   }
 }
