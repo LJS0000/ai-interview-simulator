@@ -2,7 +2,7 @@ export default class Header {
   constructor() {
     this.navbar = document.createElement('nav');
     this.sidebarBtn = document.createElement('button');
-    this.logo = document.createElement('a');
+    this.logo = document.createElement('div');
     this.menu = document.createElement('ul');
     this.menuItems = [];
 
@@ -46,7 +46,6 @@ export default class Header {
   }
 
   render(parentElement) {
-    console.log(parentElement);
     parentElement.appendChild(this.navbar);
   }
 }
