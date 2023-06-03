@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-// 루트 경로로 요청이 들어왔을 때 'index.html' 파일을 보냅니다.
+// 어떤 경로로 요청하든 'index.html' 파일을 보냅니다.
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
