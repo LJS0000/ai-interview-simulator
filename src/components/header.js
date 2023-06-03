@@ -1,7 +1,7 @@
 export default class Header {
   constructor() {
     this.navbar = document.createElement('nav');
-    this.sidebarBtn = document.createElement('div');
+    this.sidebarBtn = document.createElement('button');
     this.logo = document.createElement('a');
     this.menu = document.createElement('ul');
     this.menuItems = [];
