@@ -39,18 +39,6 @@ export default class Header {
     link.textContent = label;
     link.href = url;
 
-    // static한 페이지를 만듭니다.
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      if (window.location.pathname === url) return;
-
-      // 클릭이벤트가 발생했을 때 주소를 변경하기 위한 코드
-      window.history.pushState(null, null, url);
-
-      render();
-    });
-
     menuItem.appendChild(link);
     this.menu.appendChild(menuItem);
 

@@ -10,7 +10,7 @@ export default class App {
   }
 
   initialize() {
-    // path에 따라 메인 컨텐츠 렌더링
+    // 경로와 라우터를 생성합니다.
     this.router.addRoute('/', () => {
       const qna = new Qna();
       qna.render();

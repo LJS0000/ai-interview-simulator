@@ -22,17 +22,9 @@ app.use(
   })
 );
 
-// 루트 경로로 요청이 들어왔을 때 "index.html" 파일을 보냅니다.
-app.get('/', (req, res) => {
+// 루트 경로로 요청이 들어왔을 때 'index.html' 파일을 보냅니다.
+app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-});
-
-// MIME 유형을 설정하는 미들웨어를 추가합니다.
-app.use((req, res, next) => {
-  if (req.url.endsWith('.css')) {
-    res.setHeader('Content-Type', 'text/css');
-  }
-  next();
 });
 
 // 웹 서버를 시작합니다.
