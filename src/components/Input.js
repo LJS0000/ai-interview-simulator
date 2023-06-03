@@ -1,3 +1,5 @@
+import QaApi from '../api/qaAPI.js';
+
 export default class Input {
   constructor() {
     this.inputContainer = document.createElement('div');
@@ -27,18 +29,20 @@ export default class Input {
     this.inputContainer.appendChild(this.form);
   }
 
+  // input 제출
   submitHandler() {
-    // form 태그 사용하여 버튼과 Enter로 제출
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      this.submitMsg();
+      this.fetchInput();
     });
   }
 
-  submitMsg() {
-    const message = this.inputField.value;
-    // 여기에서 fetch를 사용하여 메시지를 전송하는 로직을 구현하면 됩니다.
-    console.log('전송되었습니다:', message);
+  // fetch 실행
+  fetchInput() {
+    const userContent = this.inputField.value;
+    const qaApi = new QaApi();
+    qaApi.fetchRequest();
+    console.log('전송되었습니다:', userContent);
 
     // input창 비우기
     this.inputField.value = '';
