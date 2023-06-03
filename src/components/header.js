@@ -31,6 +31,7 @@ export default class Header {
     this.navbar.appendChild(this.logo);
   }
 
+  // 네브바에 메뉴를 추가합니다.
   addMenuItem(label, url) {
     const menuItem = document.createElement('li');
     menuItem.classList.add('menu-item');
