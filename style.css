@@ -1,16 +1,26 @@
-/* 전역 스타일링 */
+/* --------reset CSS-------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 body {
   background-color: #f9f9f9;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar main'
+    'sidebar footer';
+  grid-template-columns: 1fr 3fr; /* 사이드바와 메인의 너비 비율 조정합니다. */
+  grid-template-rows: 9vh 1fr 4vh; /* 헤더, 메인, 푸터의 높이를 설정합니다. */
+  min-height: 100vh;
 }
 
-/* 헤더 */
+/* --------헤더-------- */
 #header-container {
+  grid-area: header;
   background-color: #b2d8b6;
 }
 
@@ -20,9 +30,53 @@ body {
 
 .menu {
   display: flex;
-  list-style: none;
 }
 
 .menu-item > a {
   text-decoration: none;
+}
+
+/* --------사이드바-------- */
+#sidebar-container {
+  grid-area: sidebar;
+  border: 1px solid rgb(21, 255, 0);
+}
+
+/* --------메인-------- */
+#content-container {
+  grid-area: main;
+  border: 1px solid rgb(0, 13, 255);
+}
+
+.main-container {
+  height: 100%;
+  width: 70vw;
+  margin: 0 auto;
+  border: 1px solid rgb(154, 154, 43);
+  display: grid;
+  grid-template-rows: 1fr 10vh;
+}
+
+.input-container {
+  border: 3px solid #28cce5;
+}
+
+/* --------푸터-------- */
+#footer-container {
+  grid-area: footer;
+  border: 1px solid rgb(220, 11, 11);
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr; /* 사이드바가 없을 때는 메인 영역이 전체를 차지하도록 설정합니다. */
+  }
+
+  #sidebar-container {
+    display: none; /* 사이드바를 숨깁니다. */
+  }
+
+  #content-container {
+    justify-self: center; /* 메인 영역을 가로 중앙 정렬합니다. */
+  }
 }

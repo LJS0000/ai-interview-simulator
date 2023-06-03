@@ -31,7 +31,7 @@ export default class App {
     this.header.render(document.getElementById('header-container'));
 
     // 입력창
-    this.input.render(document.getElementById('main-container'));
+    this.input.render(document.querySelector('.main-container'));
 
     // 푸터
     this.footer.render(document.getElementById('footer-container'));
