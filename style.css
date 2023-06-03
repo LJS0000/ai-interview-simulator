@@ -1,0 +1,28 @@
+/* 전역 스타일링 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+/* 헤더 */
+#header-container {
+  background-color: #b2d8b6;
+}
+
+.navbar {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+}
+
+.menu-item > a {
+  text-decoration: none;
+}
