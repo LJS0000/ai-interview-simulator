@@ -34,13 +34,31 @@ export default class Input {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const userContent = this.inputField.value;
-      const qaApi = new QaApi();
-      qaApi.updateQaData(userContent);
+      const userContent = this.inputField.value.trim();
 
-      // input창 비우기
-      this.inputField.value = '';
+      // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
+      if (userContent === '') {
+        this.inputHelpText();
+      } else {
+        const qaApi = new QaApi();
+        qaApi.updateQaData(userContent);
+
+        // input창 비우기
+        this.inputField.value = '';
+      }
     });
+  }
+
+  // help text
+  inputHelpText() {
+    const isExistHelpText = this.inputContainer.querySelector('.help-text');
+    if (isExistHelpText) {
+      return;
+    }
+    const helpText = document.createElement('p');
+    helpText.textContent = '내용을 입력하세요.';
+    helpText.classList.add('help-text');
+    this.inputContainer.appendChild(helpText);
   }
 
   render(parentElement) {
