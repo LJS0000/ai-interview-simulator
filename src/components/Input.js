@@ -18,14 +18,13 @@ export default class Input {
     // Input 입력 버튼
     this.submitBtn.classList.add('submit-btn');
     const submitIcon = document.createElement('img');
-    submitIcon.src = '../assets/images/icon-submit.svg';
+    submitIcon.src = './src/assets/images/icon-submit.svg';
     this.submitBtn.appendChild(submitIcon);
     // form 태그
     this.form.appendChild(this.inputField);
     this.form.appendChild(this.submitBtn);
 
-    this.inputContainer.appendChild(this.inputField);
-    this.inputContainer.appendChild(this.submitBtn);
+    this.inputContainer.appendChild(this.form);
   }
 
   submitHandler() {
