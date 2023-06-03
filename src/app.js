@@ -3,12 +3,14 @@ import Header from './components/header.js';
 import Qa from './pages/Qa.js';
 import Simulation from './pages/simulation.js';
 import Input from './components/Input.js';
+import Footer from './components/Footer.js';
 
 export default class App {
   constructor() {
     this.router = new Router();
     this.header = new Header();
     this.input = new Input();
+    this.footer = new Footer();
   }
 
   initialize() {
@@ -23,12 +25,15 @@ export default class App {
     });
     this.router.navigate();
 
-    // 네비게이션바
+    // 헤더 네비게이션바
     this.header.addMenuItem('질문하기', '/');
     this.header.addMenuItem('모의면접', '/simulation');
     this.header.render(document.getElementById('header-container'));
 
     // 입력창
     this.input.render(document.getElementById('main-container'));
+
+    // 푸터
+    this.footer.render(document.getElementById('footer-container'));
   }
 }
