@@ -29,23 +29,18 @@ export default class Input {
     this.inputContainer.appendChild(this.form);
   }
 
-  // input 제출
+  // api 모듈에 데이터를 보냅니다.
   submitHandler() {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      this.fetchInput();
+
+      const userContent = this.inputField.value;
+      const qaApi = new QaApi();
+      qaApi.updateQaData(userContent);
+
+      // input창 비우기
+      this.inputField.value = '';
     });
-  }
-
-  // fetch 실행
-  fetchInput() {
-    const userContent = this.inputField.value;
-    const qaApi = new QaApi();
-    qaApi.fetchRequest();
-    console.log('전송되었습니다:', userContent);
-
-    // input창 비우기
-    this.inputField.value = '';
   }
 
   render(parentElement) {

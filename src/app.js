@@ -1,6 +1,6 @@
 import Router from './router/Router.js';
 import Header from './components/header.js';
-import Qna from './pages/qna.js';
+import Qa from './pages/Qa.js';
 import Simulation from './pages/simulation.js';
 import Input from './components/Input.js';
 
@@ -14,8 +14,8 @@ export default class App {
   initialize() {
     // 경로와 라우터를 생성합니다.
     this.router.addRoute('/', () => {
-      const qna = new Qna();
-      qna.render();
+      const qa = new Qa();
+      qa.render();
     });
     this.router.addRoute('/simulation', () => {
       const simulation = new Simulation();
