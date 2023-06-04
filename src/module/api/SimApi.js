@@ -1,6 +1,6 @@
 import API_ENDPOINT from '../configs/api-configs';
 
-export default function simAPI() {
+export default function simApi() {
   simData = [
     {
       role: 'system',

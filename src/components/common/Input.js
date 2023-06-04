@@ -1,4 +1,4 @@
-import QaApi from '../api/qaAPI.js';
+import QaApi from '../api/QaApi.js';
 
 export default class Input {
   constructor() {
