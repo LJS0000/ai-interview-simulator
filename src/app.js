@@ -1,7 +1,7 @@
 import Router from './router/Router.js';
 import Header from './components/header.js';
-import Qa from './pages/Qa.js';
-import Simulation from './pages/simulation.js';
+import QaPage from './pages/QaPage.js';
+import SimPage from './pages/SimPage.js';
 import Input from './components/Input.js';
 import Footer from './components/Footer.js';
 
@@ -16,12 +16,12 @@ export default class App {
   initialize() {
     // 경로와 라우터를 생성합니다.
     this.router.addRoute('/', () => {
-      const qa = new Qa();
-      qa.render();
+      const qaPage = new QaPage();
+      qaPage.render();
     });
     this.router.addRoute('/simulation', () => {
-      const simulation = new Simulation();
-      simulation.render();
+      const simPage = new SimPage();
+      simPage.render();
     });
     this.router.navigate();
 

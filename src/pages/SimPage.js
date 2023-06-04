@@ -1,4 +1,4 @@
-export default class Simulation {
+export default class SimPage {
   constructor() {
     // 필요한 초기화 작업 수행
   }

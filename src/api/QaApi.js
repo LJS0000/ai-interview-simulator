@@ -19,8 +19,10 @@ export default class QaApi {
       },
     ];
 
-    // 화면에 그려질 데이터
-    this.qaChatList = [];
+    // 로컬 스토리지에서 채팅 데이터를 가져오며
+    // 새로고침 시에도 데이터를 유지할 수 있습니다.
+    const storedChatList = localStorage.getItem('qaChatList');
+    this.qaChatList = storedChatList ? JSON.parse(storedChatList) : [];
 
     QaApi.instance = this;
   }
@@ -57,11 +59,10 @@ export default class QaApi {
           },
         ];
         this.qaChatList.push(chat);
-        console.log(this.qaChatList);
       })
-      .then(() => {
+      .then(async () => {
         this.saveQaChatList();
-        // 화면 렌더 메소드 실행
+        await location.reload();
       })
       .catch((err) => {
         console.log(err);

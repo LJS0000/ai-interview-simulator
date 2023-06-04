@@ -32,9 +32,7 @@ export default class Header {
     // 헤더 메뉴
     this.menu.classList.add('menu');
 
-    this.navbar.appendChild(this.sidebarBtn);
-    this.navbar.appendChild(this.menu);
-    this.navbar.appendChild(this.logo);
+    this.navbar.append(this.sidebarBtn, this.menu, this.logo);
   }
 
   // 네브바에 메뉴를 추가합니다.
