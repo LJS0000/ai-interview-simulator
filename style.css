@@ -18,6 +18,9 @@ body {
   min-height: 100vh;
 }
 
+/* 여기에 코드 추가해야 함 */
+/* 사이드바 토글 시 그리드 컬럼 수정해야 함 */
+
 /* --------헤더-------- */
 #header-container {
   grid-area: header;
@@ -40,6 +43,11 @@ body {
 #sidebar-container {
   grid-area: sidebar;
   border: 1px solid rgb(21, 255, 0);
+  display: none;
+}
+
+#sidebar-container.show {
+  display: block; /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
 /* --------메인-------- */
@@ -65,18 +73,4 @@ body {
 #footer-container {
   grid-area: footer;
   border: 1px solid rgb(220, 11, 11);
-}
-
-@media (max-width: 768px) {
-  body {
-    grid-template-columns: 1fr; /* 사이드바가 없을 때는 메인 영역이 전체를 차지하도록 설정합니다. */
-  }
-
-  #sidebar-container {
-    display: none; /* 사이드바를 숨깁니다. */
-  }
-
-  #content-container {
-    justify-self: center; /* 메인 영역을 가로 중앙 정렬합니다. */
-  }
 }

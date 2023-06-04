@@ -26,7 +26,6 @@ export default class Qa {
 
   render() {
     const section = document.querySelector('#content-container');
-    console.log(section);
     section.appendChild(this.mainContainer);
   }
 }

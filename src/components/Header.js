@@ -1,3 +1,5 @@
+import SidebarEventHandler from './module/SidebarEventHandler.js';
+
 export default class Header {
   constructor() {
     this.navbar = document.createElement('nav');
@@ -17,6 +19,10 @@ export default class Header {
     const drawerIcon = document.createElement('img');
     drawerIcon.src = './src/assets/images/icon-drawer.svg';
     this.sidebarBtn.appendChild(drawerIcon);
+    // 사이드바 토글 이벤트
+    const sidebarEvent = new SidebarEventHandler();
+    this.sidebarBtn.addEventListener('click', sidebarEvent.toggle);
+
     // 헤더 로고
     this.logo.classList.add('logo');
     const logoImg = document.createElement('img');
