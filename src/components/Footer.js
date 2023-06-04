@@ -7,9 +7,11 @@ export default class Footer {
   }
 
   init() {
+    this.footerContainer.classList.add('footer-container');
+
+    this.footerText.classList.add('footer-text');
     this.footerText.textContent =
       'Copyright 2023. 이지수 All pictures cannot be copied without permission';
-    this.footerText.classList.add('footer-text');
 
     this.footerContainer.appendChild(this.footerText);
   }
