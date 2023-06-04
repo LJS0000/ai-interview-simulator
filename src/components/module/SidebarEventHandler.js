@@ -4,7 +4,8 @@ export default class SidebarEventHandler {
     this.body = document.body;
   }
 
-  // eventHandler로 호출했기 때문에 화살표함수를 사용해야 합니다.
+  // eventHandler로 호출했기 때문에
+  // this의 스코프를 유지하기 위해 화살표함수를 사용합니다.
   toggle = () => {
     console.log('toggle');
 
