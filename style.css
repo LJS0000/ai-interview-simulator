@@ -58,16 +58,15 @@ body.reduce {
 /* --------메인-------- */
 #content-container {
   grid-area: main;
+  width: 70vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1fr 10vh;
   border: 1px solid rgb(0, 13, 255);
 }
 
 .main-container {
-  height: 100%;
-  width: 70vw;
-  margin: 0 auto;
   border: 1px solid rgb(154, 154, 43);
-  display: grid;
-  grid-template-rows: 1fr 10vh;
 }
 
 .input-container {
