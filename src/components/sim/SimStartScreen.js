@@ -10,6 +10,8 @@ export default class SimStartScreen {
     this.simStartBtn = document.createElement('button');
 
     this.init();
+    this.btnHandler();
+    // this.submitHandler();
   }
 
   init() {
@@ -23,6 +25,7 @@ export default class SimStartScreen {
     this.clockIcon.src = 'src/assets/images/icon-timer.svg';
     this.simStartText.textContent = '80초 안에 답변하세요!';
     this.simStartBtn.textContent = 'START';
+    this.simStartBtn.disabled = true;
 
     this.simStartForm.append(this.dropdown, this.simStartBtn);
     this.simStartContainer.append(
@@ -30,6 +33,26 @@ export default class SimStartScreen {
       this.simStartText,
       this.simStartForm
     );
+  }
+
+  // 유저가 옵션을 선택하지 않았을 때는 button을 disabled 합니다.
+  btnHandler() {
+    this.simStartForm.addEventListener('input', (e) => {
+      const userOption = this.dropdown.value;
+
+      if (userOption === '' || userOption === '--선택--') {
+        this.simStartBtn.disabled = true;
+      } else {
+        this.simStartBtn.disabled = false;
+      }
+    });
+  }
+
+  // api 모듈에 데이터를 보냅니다.
+  submitHandler() {
+    this.simStartForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
   }
 
   render(parentElement) {
