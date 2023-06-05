@@ -14,20 +14,23 @@ export default class App {
   }
 
   initialize() {
+    const path = window.location.pathname;
+    console.log(window.location.href);
+    console.log(path);
     // 경로와 라우터를 생성합니다.
-    this.router.addRoute('/ai-interview-simulator/', () => {
+    this.router.addRoute(`${path}`, () => {
       const qaPage = new QaPage();
       qaPage.render();
     });
-    this.router.addRoute('/ai-interview-simulator/simulation', () => {
+    this.router.addRoute(`${path}/simulation`, () => {
       const simPage = new SimPage();
       simPage.render();
     });
     this.router.navigate();
 
     // 헤더 네비게이션바
-    this.header.addMenuItem('질문하기', '/ai-interview-simulator/');
-    this.header.addMenuItem('모의면접', '/ai-interview-simulator/simulation');
+    this.header.addMenuItem('질문하기', `/`);
+    this.header.addMenuItem('모의면접', `/simulation`);
     this.header.render(document.getElementById('header-container'));
 
     // 입력창
