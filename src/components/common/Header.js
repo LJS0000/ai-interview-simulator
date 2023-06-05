@@ -1,4 +1,4 @@
-import SidebarEventHandler from './module/SidebarEventHandler.js';
+import SidebarEventHandler from '../../module/SidebarEventHandler.js';
 
 export default class Header {
   constructor() {

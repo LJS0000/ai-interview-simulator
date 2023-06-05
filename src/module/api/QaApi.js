@@ -1,4 +1,4 @@
-import API_ENDPOINT from '../config/apiConfigs.js';
+import API_ENDPOINT from '../../configs/apiConfig.js';
 
 export default class QaApi {
   constructor() {
