@@ -42,9 +42,12 @@ export default class simApi {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        const questions = res.choices[0].message.content;
+        localStorage.setItem('questions', questions);
+        return questions;
       })
-      .then(() => {
-        return;
+      .then((questions) => {
+        // 다음 화면으로 넘어갑니다.
       })
       .catch((err) => {
         console.log(err);
