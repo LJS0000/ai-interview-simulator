@@ -13,20 +13,20 @@ export default class App {
     this.footer = new Footer();
   }
 
-  initialize() {
-    const path = window.location.pathname;
-    console.log(window.location.href);
-    console.log(path);
+  init() {
+    const href = window.location.href;
+    const path = window.location.path;
+
     // 경로와 라우터를 생성합니다.
-    this.router.addRoute(`${path}`, () => {
+    this.router.addRoute(`/`, () => {
       const qaPage = new QaPage();
       qaPage.render();
     });
-    this.router.addRoute(`${path}/simulation`, () => {
+    this.router.addRoute(`/simulation`, () => {
       const simPage = new SimPage();
       simPage.render();
     });
-    this.router.navigate();
+    this.router.navigate(path);
 
     // 헤더 네비게이션바
     this.header.addMenuItem('질문하기', `/`);

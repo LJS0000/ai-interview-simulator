@@ -13,7 +13,6 @@ export default class Header {
 
   init() {
     this.navbar.classList.add('navbar');
-
     // 사이드바 햄버거 메뉴
     this.sidebarBtn.classList.add('sidebar-btn');
     const drawerIcon = document.createElement('img');
@@ -22,7 +21,6 @@ export default class Header {
     // 사이드바 토글 이벤트
     const sidebarEvent = new SidebarEventHandler();
     this.sidebarBtn.addEventListener('click', sidebarEvent.toggle);
-
     // 헤더 로고
     this.logo.classList.add('logo');
     const logoImg = document.createElement('img');

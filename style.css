@@ -65,7 +65,7 @@ body.reduce {
   border: 1px solid rgb(0, 13, 255);
 }
 
-.main-container {
+.qa-container .sim-container {
   border: 1px solid rgb(154, 154, 43);
 }
 
