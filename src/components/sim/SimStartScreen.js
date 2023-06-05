@@ -1,4 +1,5 @@
 import createDropdown from './createDropdown.js';
+import SimApi from '../../module/api/SimApi.js';
 
 export default class SimStartScreen {
   constructor() {
@@ -11,7 +12,7 @@ export default class SimStartScreen {
 
     this.init();
     this.btnHandler();
-    // this.submitHandler();
+    this.submitHandler();
   }
 
   init() {
@@ -38,9 +39,7 @@ export default class SimStartScreen {
   // 유저가 옵션을 선택하지 않았을 때는 button을 disabled 합니다.
   btnHandler() {
     this.simStartForm.addEventListener('input', (e) => {
-      const userOption = this.dropdown.value;
-
-      if (userOption === '' || userOption === '--선택--') {
+      if (this.dropdown.value === '' || this.dropdown.value === '--선택--') {
         this.simStartBtn.disabled = true;
       } else {
         this.simStartBtn.disabled = false;
@@ -52,6 +51,8 @@ export default class SimStartScreen {
   submitHandler() {
     this.simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const simApi = new SimApi();
+      simApi.updateSimData(this.dropdown.value);
     });
   }
 

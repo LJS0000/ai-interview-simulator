@@ -27,7 +27,7 @@ export default class simApi {
       role: 'user',
       content: `user의 관심 분야는 ${userOption} 직군입니다.`,
     });
-    this.fetchRequest(simData);
+    this.fetchRequest(this.simData);
   }
 
   fetchRequest(simData) {
@@ -36,7 +36,7 @@ export default class simApi {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.simData),
+      body: JSON.stringify(simData),
       redirect: 'follow',
     })
       .then((res) => res.json())
