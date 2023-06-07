@@ -1,5 +1,4 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
-import Spinner from '../../components/common/Spinner.js';
 
 export default class simApi {
   constructor() {
@@ -32,10 +31,6 @@ export default class simApi {
   }
 
   fetchRequest(simData) {
-    // 로딩 화면 표시
-    const section = document.getElementById('content-container');
-    section.appendChild(Spinner());
-
     fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -46,9 +41,6 @@ export default class simApi {
     })
       .then((res) => res.json())
       .then((res) => {
-        // 로딩 화면 제거
-        section.removeChild(document.querySelector('.spinner'));
-
         const questions = res.choices[0].message.content;
         localStorage.setItem('questions', questions);
         return questions;
