@@ -14,8 +14,7 @@ export default class App {
   }
 
   init() {
-    const href = window.location.href;
-    const path = window.location.path;
+    const path = window.location.pathname;
 
     // 경로와 라우터를 생성합니다.
     this.router.addRoute(`/`, () => {
