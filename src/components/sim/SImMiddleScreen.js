@@ -19,12 +19,13 @@ export default class SimMiddleScreen {
     this.simTimerContainer.classList.add('sim-timer-container');
 
     this.simQuestionText.textContent = '면접을 시작하겠습니다.';
-    this.simImg = '../../assets/images/interviewers.png';
+    this.simImg.src = 'src/assets/images/interviewers.png';
+    this.simImg.alt = 'interviwer image';
 
     this.simQuestionBubble.appendChild(this.simQuestionText);
     this.simMiddleContainer.append(
       this.simQuestionBubble,
-      this.simQuestionText,
+      this.simImg,
       this.simTimerContainer
     );
   }

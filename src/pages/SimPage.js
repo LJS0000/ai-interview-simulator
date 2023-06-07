@@ -1,5 +1,6 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
 import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
+import Input from '../components/common/Input.js';
 
 export default class SimPage {
   constructor() {
@@ -8,6 +9,7 @@ export default class SimPage {
 
     this.simStartScreen = new SimStartScreen();
     this.simMiddleScreen = new SimMiddleScreen();
+    this.input = new Input();
   }
 
   init() {
@@ -20,7 +22,8 @@ export default class SimPage {
       section.removeChild(section.firstChild);
     }
     this.simMiddleScreen.render(this.mainContainer);
-    section.append(this.mainContainer);
+    section.appendChild(this.mainContainer);
+    this.input.render(document.getElementById('content-container'));
   }
 
   render() {

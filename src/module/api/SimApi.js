@@ -47,10 +47,6 @@ export default class simApi {
         localStorage.setItem('questions', questions);
         return questions;
       })
-      .then(() => {
-        const simPage = new SimPage();
-        simPage.progress();
-      })
       .catch((err) => {
         console.log(err);
         alert('Error: 연결에 실패했습니다.');

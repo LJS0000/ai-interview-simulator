@@ -1,4 +1,5 @@
 import createDropdown from './createDropdown.js';
+import SimPage from '../../pages/SimPage.js';
 import SimApi from '../../module/api/SimApi.js';
 
 export default class SimStartScreen {
@@ -52,7 +53,9 @@ export default class SimStartScreen {
     this.simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const simApi = new SimApi();
+      const simPage = new SimPage();
       simApi.updateSimData(this.dropdown.value);
+      simPage.progress();
     });
   }
 
