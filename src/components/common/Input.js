@@ -53,6 +53,7 @@ export default class Input {
         const answers = storedAnswers ? JSON.parse(storedAnswers) : [];
         answers.push(userContent);
         localStorage.setItem('answers', JSON.stringify(answers));
+        this.inputField.value = '';
       }
     });
   }

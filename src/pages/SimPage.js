@@ -1,19 +1,32 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
+import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
+
 export default class SimPage {
   constructor() {
     this.mainContainer = document.createElement('main');
-    this.simStartScreen = new SimStartScreen();
+    this.mainContainer.classList.add('main-container');
 
-    this.init();
+    this.simStartScreen = new SimStartScreen();
+    this.simMiddleScreen = new SimMiddleScreen();
   }
 
   init() {
-    this.mainContainer.classList.add('main-container');
     this.simStartScreen.render(this.mainContainer);
   }
 
-  render() {
+  progress() {
     const section = document.querySelector('#content-container');
-    section.appendChild(this.mainContainer);
+    while (section.firstChild) {
+      section.removeChild(section.firstChild);
+    }
+    this.simMiddleScreen.render(this.mainContainer);
+    section.append(this.mainContainer);
+  }
+
+  render() {
+    this.init();
+
+    const section = document.querySelector('#content-container');
+    section.append(this.mainContainer);
   }
 }
