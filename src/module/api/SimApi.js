@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
+import SimPage from '../../pages/SimPage.js';
 
 export default class simApi {
   constructor() {
@@ -44,6 +45,10 @@ export default class simApi {
         const questions = res.choices[0].message.content;
         localStorage.setItem('questions', questions);
         return questions;
+      })
+      .then(() => {
+        const simPage = new SimPage();
+        simPage.progress();
       })
       .catch((err) => {
         console.log(err);
