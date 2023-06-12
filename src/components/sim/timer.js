@@ -1,12 +1,21 @@
 export default function timer(simTimer) {
   let remainingTime = parseInt(simTimer.textContent.split(' ')[2]);
+  let seconds = remainingTime;
+  let milliseconds = 99;
 
   const timerId = setInterval(() => {
-    remainingTime -= 1;
-    simTimer.textContent = `남은 시간: ${remainingTime}초`;
+    milliseconds -= 1;
+    if (milliseconds < 0) {
+      seconds -= 1;
+      milliseconds = 99;
+    }
 
-    if (remainingTime <= 0) {
+    simTimer.textContent = `${seconds
+      .toString()
+      .padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+
+    if (seconds <= 0 && milliseconds <= 0) {
       clearInterval(timerId);
     }
-  }, 1000);
+  }, 100);
 }

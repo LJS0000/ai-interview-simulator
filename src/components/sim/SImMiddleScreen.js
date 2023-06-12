@@ -1,9 +1,9 @@
 import timer from './timer.js';
+
 export default function SimMiddleScreen() {
   const simMiddleContainer = document.createElement('main');
   const simQuestionBubble = document.createElement('div');
   const simQuestionText = document.createElement('p');
-  const simImg = document.createElement('img');
   const simTimerContainer = document.createElement('div');
   const simTimerIcon = document.createElement('img');
   const simTimer = document.createElement('p');
@@ -12,30 +12,27 @@ export default function SimMiddleScreen() {
     simMiddleContainer.classList.add('sim-middle-container');
     simQuestionBubble.classList.add('sim-question-bubble');
     simQuestionText.classList.add('sim-question-text');
-    simImg.classList.add('sim-img');
     simTimerContainer.classList.add('sim-timer-container');
     simTimerIcon.classList.add('sim-timer-icon');
     simTimer.classList.add('sim-timer');
 
-    simImg.src = 'src/assets/images/interviewers.png';
-    simImg.alt = 'interviwer image';
     simTimerIcon.src = 'src/assets/images/icon-timer.svg';
     simTimer.textContent = '남은 시간: 80초';
 
     simTimerContainer.append(simTimerIcon, simTimer);
     simQuestionBubble.appendChild(simQuestionText);
-    simMiddleContainer.append(simQuestionBubble, simImg, simTimerContainer);
+    simMiddleContainer.append(simQuestionBubble, simTimerContainer);
   };
 
   this.updateQuestion = () => {
     const input = document.querySelector('.input-field');
     const userContent = input ? input.value : '';
+    const timerId = timer(simTimer);
+    console.log(timerId);
+
     if (userContent.trim() !== '') {
       clearTimeout(timerId);
     }
-
-    // 질문 업데이트 시 타이머 시작
-    timer(simTimer);
   };
 
   this.autoUpdateQuestion = () => {
