@@ -1,35 +1,18 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
 import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
-import Input from '../components/common/Input.js';
 
-export default class SimPage {
-  constructor() {
-    this.mainContainer = document.createElement('main');
-    this.mainContainer.classList.add('main-container');
+export default function SimPage() {
+  const simStartScreen = new SimStartScreen();
+  const simMiddleScreen = new SimMiddleScreen();
 
-    this.simStartScreen = new SimStartScreen();
-    this.simMiddleScreen = new SimMiddleScreen();
-    this.input = new Input();
-  }
+  const section = document.querySelector('#content-container');
 
-  init() {
-    this.simStartScreen.render(this.mainContainer);
-  }
+  this.render = () => {
+    simStartScreen.render(section);
+  };
 
-  progress() {
-    const section = document.querySelector('#content-container');
-    while (section.firstChild) {
-      section.removeChild(section.firstChild);
-    }
-    this.simMiddleScreen.render(this.mainContainer);
-    section.appendChild(this.mainContainer);
-    this.input.render(document.getElementById('content-container'));
-  }
-
-  render() {
-    this.init();
-
-    const section = document.querySelector('#content-container');
-    section.append(this.mainContainer);
-  }
+  this.progress = () => {
+    section.removeChild(section.firstChild);
+    simMiddleScreen.render(section);
+  };
 }

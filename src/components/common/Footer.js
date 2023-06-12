@@ -1,12 +1,8 @@
-export default class Footer {
-  constructor() {
-    this.footerContainer = document.createElement('div');
-    this.footerText = document.createElement('p');
+export default function Footer() {
+  this.footerContainer = document.createElement('div');
+  this.footerText = document.createElement('p');
 
-    this.init();
-  }
-
-  init() {
+  this.init = () => {
     this.footerContainer.classList.add('footer-container');
 
     this.footerText.classList.add('footer-text');
@@ -14,9 +10,11 @@ export default class Footer {
       'Copyright 2023. 이지수 All pictures cannot be copied without permission';
 
     this.footerContainer.appendChild(this.footerText);
-  }
+  };
 
-  render(parentElement) {
+  this.render = (parentElement) => {
     parentElement.appendChild(this.footerContainer);
-  }
+  };
+
+  this.init();
 }
