@@ -9,17 +9,6 @@ export default function Router() {
     });
   };
 
-  // 경로와 페이지 렌더 함수를 받아 routes에 추가합니다.
-  const addRoute = (path, callback) => {
-    routes.push({ path, callback });
-  };
-
-  // 주어진 경로로 URL을 변경하고, handleRouteChange를 실행합니다.
-  const navigate = (path) => {
-    history.replaceState(null, null, path);
-    handleRouteChange();
-  };
-
   // 등록된 경로(routes)와 현재 경로(currentPath)를 비교하여 섹션을 렌더링합니다.
   const handleRouteChange = () => {
     const currentPath = window.location.pathname;
@@ -31,10 +20,16 @@ export default function Router() {
     }
   };
 
-  init();
-
-  return {
-    addRoute,
-    navigate,
+  // 경로와 페이지 렌더 함수를 받아 routes에 추가합니다.
+  this.addRoute = (path, callback) => {
+    routes.push({ path, callback });
   };
+
+  // 주어진 경로로 URL을 변경하고, handleRouteChange를 실행합니다.
+  this.navigate = (path) => {
+    history.replaceState(null, null, path);
+    handleRouteChange();
+  };
+
+  init();
 }

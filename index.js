@@ -1,3 +1,3 @@
-import App from './src/App.js';
+import app from './src/app.js';
 
-App();
+app();

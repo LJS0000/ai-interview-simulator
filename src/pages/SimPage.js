@@ -1,35 +1,30 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
 import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
-import Input from '../components/common/Input.js';
 
-export default class SimPage {
-  constructor() {
-    this.mainContainer = document.createElement('main');
-    this.mainContainer.classList.add('main-container');
+export default function SimPage() {
+  const simStartScreen = new SimStartScreen();
+  const simMiddleScreen = new SimMiddleScreen();
 
-    this.simStartScreen = new SimStartScreen();
-    this.simMiddleScreen = new SimMiddleScreen();
-    this.input = new Input();
-  }
+  const mainContainer = document.createElement('main');
 
-  init() {
-    this.simStartScreen.render(this.mainContainer);
-  }
+  const init = () => {
+    mainContainer.classList.add('main-container');
+    simStartScreen.render(mainContainer);
+  };
 
-  progress() {
+  this.progress = () => {
     const section = document.querySelector('#content-container');
     while (section.firstChild) {
       section.removeChild(section.firstChild);
     }
-    this.simMiddleScreen.render(this.mainContainer);
-    section.appendChild(this.mainContainer);
-    this.input.render(document.getElementById('content-container'));
-  }
+    simMiddleScreen.render(mainContainer);
+    section.appendChild(mainContainer);
+  };
 
-  render() {
-    this.init();
+  this.render = (parentElement) => {
+    parentElement.append(mainContainer);
+  };
 
-    const section = document.querySelector('#content-container');
-    section.append(this.mainContainer);
-  }
+  init();
+  this.progress();
 }

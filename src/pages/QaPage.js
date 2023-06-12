@@ -1,15 +1,11 @@
-export default class QaPage {
-  constructor() {
-    this.qaContainer = document.createElement('main');
-    this.qaContainer.classList.add('qa-container');
-  }
+export default function QaPage() {
+  const qaContainer = document.createElement('main');
+  qaContainer.classList.add('qa-container');
 
-  initChatScreen(data) {
-    this.chatContainer = document.createElement('ul');
-    this.chatContainer.classList.add('chat-container');
-
+  const initChatScreen = (data) => {
     const qaChatList = JSON.parse(data);
-    console.log(qaChatList);
+    const chatContainer = document.createElement('ul');
+    chatContainer.classList.add('chat-container');
 
     for (const i of qaChatList) {
       for (const chat of i) {
@@ -28,38 +24,43 @@ export default class QaPage {
         }
 
         chatWrapper.appendChild(chatText);
-        this.chatContainer.appendChild(chatWrapper);
+        chatContainer.appendChild(chatWrapper);
       }
     }
 
-    this.qaContainer.appendChild(this.chatContainer);
-  }
+    qaContainer.appendChild(chatContainer);
+  };
 
-  initGuideScreen() {
+  const initGuideScreen = () => {
     const guideContainer = document.createElement('div');
     const guideText = document.createElement('p');
 
     guideContainer.classList.add('guide-container');
     guideText.classList.add('guide-text');
 
-    guideText.innerHTML = `안녕하세요!<br>AI 인터뷰 시뮬레이터입니다.<br>면접에 대해 궁금한 점이 있으신가요?<br>자유롭게 질문해 보세요.`;
+    guideText.innerHTML =
+      '안녕하세요! AI 인터뷰 시뮬레이터입니다. 면접에 대해 궁금한 점이 있으신가요? 자유롭게 질문해 보세요.';
 
     guideContainer.appendChild(guideText);
-    this.qaContainer.appendChild(guideContainer);
-  }
+    qaContainer.appendChild(guideContainer);
+  };
 
-  render() {
+  const render = () => {
     const section = document.querySelector('#content-container');
 
     // 로컬스토리지에 기존 데이터가 있으면 chat 화면을
     // 없다면 신규 사용자를 위한 화면을 렌더합니다.
     const data = localStorage.getItem('qaChatList');
     if (data) {
-      this.initChatScreen(data);
+      initChatScreen(data);
     } else {
-      this.initGuideScreen();
+      initGuideScreen();
     }
 
-    section.appendChild(this.qaContainer);
-  }
+    section.appendChild(qaContainer);
+  };
+
+  return {
+    render,
+  };
 }
