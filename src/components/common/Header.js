@@ -8,7 +8,7 @@ export default function Header() {
   const menu = document.createElement('ul');
   const menuItems = [];
 
-  const init = () => {
+  this.init = () => {
     navbar.classList.add('navbar');
     // 사이드바 햄버거 메뉴
     sidebarBtn.classList.add('sidebar-btn');
@@ -48,5 +48,5 @@ export default function Header() {
     parentElement.appendChild(navbar);
   };
 
-  init();
+  this.init();
 }

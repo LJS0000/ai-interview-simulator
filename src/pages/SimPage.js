@@ -5,26 +5,14 @@ export default function SimPage() {
   const simStartScreen = new SimStartScreen();
   const simMiddleScreen = new SimMiddleScreen();
 
-  const mainContainer = document.createElement('main');
+  const section = document.querySelector('#content-container');
 
-  const init = () => {
-    mainContainer.classList.add('main-container');
-    simStartScreen.render(mainContainer);
+  this.render = () => {
+    simStartScreen.render(section);
   };
 
   this.progress = () => {
-    const section = document.querySelector('#content-container');
-    while (section.firstChild) {
-      section.removeChild(section.firstChild);
-    }
-    simMiddleScreen.render(mainContainer);
-    section.appendChild(mainContainer);
+    section.removeChild(section.firstChild);
+    simMiddleScreen.render(section);
   };
-
-  this.render = (parentElement) => {
-    parentElement.append(mainContainer);
-  };
-
-  init();
-  this.progress();
 }

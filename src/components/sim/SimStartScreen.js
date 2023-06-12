@@ -3,15 +3,15 @@ import SimPage from '../../pages/SimPage.js';
 import SimApi from '../../module/api/SimApi.js';
 
 export default function SimStartScreen() {
-  const simStartContainer = document.createElement('div');
+  const mainContainer = document.createElement('main');
   const clockIcon = document.createElement('img');
   const simStartText = document.createElement('p');
   const simStartForm = document.createElement('form');
   const dropdown = createDropdown();
   const simStartBtn = document.createElement('button');
 
-  const init = () => {
-    simStartContainer.classList.add('sim-start-container');
+  this.init = () => {
+    mainContainer.classList.add('main-container');
     clockIcon.classList.add('clock-icon');
     simStartText.classList.add('sim-start-text');
     simStartForm.classList.add('sim-start-form');
@@ -24,11 +24,11 @@ export default function SimStartScreen() {
     simStartBtn.disabled = true;
 
     simStartForm.append(dropdown, simStartBtn);
-    simStartContainer.append(clockIcon, simStartText, simStartForm);
+    mainContainer.append(clockIcon, simStartText, simStartForm);
   };
 
   // 유저가 옵션을 선택하지 않았을 때는 button을 disabled 합니다.
-  const btnHandler = () => {
+  this.btnHandler = () => {
     simStartForm.addEventListener('input', (e) => {
       if (dropdown.value === '' || dropdown.value === '--선택--') {
         simStartBtn.disabled = true;
@@ -39,7 +39,7 @@ export default function SimStartScreen() {
   };
 
   // api 모듈에 데이터를 보냅니다.
-  const submitHandler = () => {
+  this.submitHandler = () => {
     simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const simApi = new SimApi();
@@ -50,10 +50,10 @@ export default function SimStartScreen() {
   };
 
   this.render = (parentElement) => {
-    parentElement.append(simStartContainer);
+    parentElement.append(mainContainer);
   };
 
-  init();
-  btnHandler();
-  submitHandler();
+  this.init();
+  this.btnHandler();
+  this.submitHandler();
 }

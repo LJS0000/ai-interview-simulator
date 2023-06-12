@@ -1,6 +1,6 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
 import qaData from '../../constants/qaData.js';
-import Spinner from '../../components/common/Spinner.js';
+import spinner from '../../components/common/spinner.js';
 
 export default function QaApi() {
   // 로컬 스토리지에서 채팅 데이터를 가져오며
@@ -13,6 +13,11 @@ export default function QaApi() {
     return QaApi.instance;
   }
   QaApi.instance = this;
+
+  // 로컬스토리지에 화면에 그려질 데이터를 저장합니다.
+  const saveQaChatList = () => {
+    localStorage.setItem('qaChatList', JSON.stringify(qaChatList));
+  };
 
   // input을 받아서 API body값으로 보낼 데이터를 추가합니다.
   const updateQaData = (userContent) => {
@@ -27,7 +32,7 @@ export default function QaApi() {
   const fetchRequest = (userContent) => {
     // 로딩 화면 표시
     const section = document.getElementById('content-container');
-    section.appendChild(Spinner());
+    section.appendChild(spinner());
 
     fetch(API_ENDPOINT, {
       method: 'POST',
@@ -62,10 +67,5 @@ export default function QaApi() {
         console.log(err);
         alert('Error: 연결에 실패했습니다.');
       });
-  };
-
-  // 로컬스토리지에 화면에 그려질 데이터를 저장합니다.
-  const saveQaChatList = () => {
-    localStorage.setItem('qaChatList', JSON.stringify(qaChatList));
   };
 }
