@@ -26,48 +26,40 @@
 
 ## 6. 코드컨벤션:
 
-- 함수명: 파스칼케이스를 사용합니다.
-
-  - 예: `calculateTotalPrice()`
-
+- 함수명: 카멜케이스를 사용합니다.
+  - 예: `myComponent()`
 - 변수명: 카멜케이스를 사용합니다.
-
   - 예: `orderCount, customerName`
-
 - 약어: 다음 항목은 약어를 사용합니다.
-
   - response > `res`
   - error > `err`
   - button > `btn`
   - image > `img`
   - simulation > `sim`
-
 - 컴포넌트 선언: 함수 선언식을 사용합니다.
   - 예:
 
 ```js
-function MyComponent() {
+function myComponent() {
   // ...
 }
 ```
 
-- 컴포넌트 내부 함수: 함수 표현식 또는 화살표 함수를 사용합니다.
+- 컴포넌트 내부 함수: 화살표함수를 사용합니다.
   - 예:
 
 ```js
-const handleClick = function () {
-  // ...
-};
-
-const handleInputChange = (event) => {
-  // ...
-};
+function component() {
+  const innerFunc = () => {
+    // ...
+  };
+}
 ```
 
 - 단일 함수 export: 파일명은 해당 함수와 동일하게 설정합니다.
-  - 예: `calculateTotalPrice.js` 파일은 `calculateTotalPrice` 함수만을 export합니다.
-- 폴더명: 소문자를 사용합니다.
-  - 예: `module, components`
+  - 예: `myComponent.js` 파일은 `myComponent` 함수만을 export합니다.
+- 폴더명: 케밥 케이스를 사용합니다.
+  - 예: `module, my-folder`
 
 ## 7. 사용 방법:
 
