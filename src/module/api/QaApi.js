@@ -1,5 +1,5 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
-
+import Spinner from '../../components/common/Spinner.js';
 export default class QaApi {
   constructor() {
     // 채팅 누적을 위해 싱글톤패턴을 적용합니다.
@@ -38,6 +38,10 @@ export default class QaApi {
 
   // 학습용 qaData 데이터를 fetch 합니다.
   fetchRequest(userContent) {
+    // 로딩 화면 표시
+    const section = document.getElementById('content-container');
+    section.appendChild(Spinner());
+
     fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -59,6 +63,9 @@ export default class QaApi {
           },
         ];
         this.qaChatList.push(chat);
+
+        // 로딩 화면 제거
+        section.removeChild(document.querySelector('.spinner'));
       })
       .then(async () => {
         this.saveQaChatList();

@@ -1,7 +1,7 @@
 export default class QaPage {
   constructor() {
-    this.mainContainer = document.createElement('main');
-    this.mainContainer.classList.add('main-container');
+    this.qaContainer = document.createElement('main');
+    this.qaContainer.classList.add('qa-container');
   }
 
   initChatScreen(data) {
@@ -32,31 +32,20 @@ export default class QaPage {
       }
     }
 
-    this.mainContainer.appendChild(this.chatContainer);
+    this.qaContainer.appendChild(this.chatContainer);
   }
 
-  // 주석 처리한 기능은(샘플 질문 버튼) 후반부에 작업 예정입니다.
   initGuideScreen() {
     const guideContainer = document.createElement('div');
-    const guideTitle = document.createElement('h1');
     const guideText = document.createElement('p');
-    // const guideSampleContainer = document.createElement('div');
-    // const guideSampleBtn = document.createElement('button');
 
     guideContainer.classList.add('guide-container');
-    guideTitle.classList.add('guide-title');
     guideText.classList.add('guide-text');
-    // guideSampleContainer.classList.add('guide-sample-container');
-    // guideSampleBtn.classList.add('guide-sample-btn');
 
-    guideTitle.innerHTML = `안녕하세요!<br>AI 인터뷰 시뮬레이터입니다.`;
-    guideText.innerHTML = `면접에 대해 궁금한 점이 있으신가요?<br>자유롭게 질문해 보세요.`;
-    // guideSampleBtn.textContent = '텍스트가 들어갑니다';
+    guideText.innerHTML = `안녕하세요!<br>AI 인터뷰 시뮬레이터입니다.<br>면접에 대해 궁금한 점이 있으신가요?<br>자유롭게 질문해 보세요.`;
 
-    // guideSampleContainer.appendChild(guideSampleBtn);
-    // guideContainer.appendChild(guideSampleContainer);
-    guideContainer.append(guideTitle, guideText);
-    this.mainContainer.appendChild(guideContainer);
+    guideContainer.appendChild(guideText);
+    this.qaContainer.appendChild(guideContainer);
   }
 
   render() {
@@ -71,6 +60,6 @@ export default class QaPage {
       this.initGuideScreen();
     }
 
-    section.appendChild(this.mainContainer);
+    section.appendChild(this.qaContainer);
   }
 }

@@ -39,11 +39,20 @@ export default class Input {
       // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
       if (userContent === '') {
         this.inputHelpText();
-      } else {
+
+        // qna페이지에서는 request 요청을 보냅니다.
+      } else if (window.location.pathname === '/') {
         const qaApi = new QaApi();
         qaApi.updateQaData(userContent);
 
-        // input창 비우기
+        this.inputField.value = '';
+
+        // simulation 페이지에서는 로컬스토리지에 값을 저장합니다.
+      } else if (window.location.pathname === '/simulation') {
+        const storedAnswers = localStorage.getItem('answers');
+        const answers = storedAnswers ? JSON.parse(storedAnswers) : [];
+        answers.push(userContent);
+        localStorage.setItem('answers', JSON.stringify(answers));
         this.inputField.value = '';
       }
     });

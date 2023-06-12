@@ -2,7 +2,6 @@ export default class Router {
   constructor() {
     // 등록된 경로와 해당하는 콜백 함수를 저장합니다.
     this.routes = [];
-
     this.currentPath = window.location.pathname;
     this.init();
   }
@@ -21,15 +20,15 @@ export default class Router {
 
   // 주어진 경로로 URL을 변경하고, handleRouteChange를 실행합니다.
   navigate(path) {
-    history.pushState(null, null, path);
+    history.replaceState(null, null, path);
     this.handleRouteChange();
   }
 
   // 등록된 경로(routes)와 현재 경로(currentPath)를 비교하여 섹션을 렌더링합니다.
   handleRouteChange() {
-    this.currentPath = window.location.pathname;
+    const currentPath = window.location.pathname;
     for (const route of this.routes) {
-      if (route.path === this.currentPath) {
+      if (route.path === currentPath) {
         route.callback();
         return;
       }
