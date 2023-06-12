@@ -22,16 +22,28 @@
 
 ## 4. 폴더 구조:
 
-프로젝트의 폴더 구조는 다음과 같습니다:
+프로젝트의 폴더 구조는 다음과 같습니다.
 
 ## 6. 코드컨벤션:
 
 - 함수명: 파스칼케이스를 사용합니다.
-  예: calculateTotalPrice()
+
+  - 예: `calculateTotalPrice()`
+
 - 변수명: 카멜케이스를 사용합니다.
-  예: orderCount, customerName
+
+  - 예: `orderCount, customerName`
+
+- 약어: 다음 항목은 약어를 사용합니다.
+
+  - response > `res`
+  - error > `err`
+  - button > `btn`
+  - image > `img`
+  - simulation > `sim`
+
 - 컴포넌트 선언: 함수 선언식을 사용합니다.
-  예:
+  - 예:
 
 ```js
 function MyComponent() {
@@ -40,7 +52,7 @@ function MyComponent() {
 ```
 
 - 컴포넌트 내부 함수: 함수 표현식 또는 화살표 함수를 사용합니다.
-  예:
+  - 예:
 
 ```js
 const handleClick = function () {
@@ -53,18 +65,21 @@ const handleInputChange = (event) => {
 ```
 
 - 단일 함수 export: 파일명은 해당 함수와 동일하게 설정합니다.
-  예: calculateTotalPrice.js 파일에서 calculateTotalPrice 함수를 export합니다.
+  - 예: `calculateTotalPrice.js` 파일은 `calculateTotalPrice` 함수만을 export합니다.
 - 폴더명: 소문자를 사용합니다.
-  예: utils, components
+  - 예: `module, components`
 
 ## 7. 사용 방법:
 
+다음 주소에 접속합니다.
+
+- https://ljs0000.github.io/ai-interview-simulator/
+
 로컬 환경에서 프로젝트를 사용하려면...
 
-1. 저장소를 클론하거나 프로젝트 파일을 다운로드합니다.
-2. 웹 브라우저에서 `index.html` 파일을 엽니다.
-3. 페이지에 표시된 면접 질문에 대답합니다.
-4. 사용자의 응답은 로컬 스토리지에 저장됩니다.
+1. 현재 리포지토리를 클론하거나 프로젝트 파일을 다운로드합니다.
+2. `$ npm run dev` 로컬 서버 실행 명령어를 입력합니다.
+3. 사용자의 응답은 로컬 스토리지에 저장됩니다.
 
 ## 8. 참고:
 
