@@ -1,37 +1,40 @@
 import timer from './timer.js';
+import Progressbar from './Progressbar.js';
 
 export default function SimMiddleScreen() {
-  const simMiddleContainer = document.createElement('main');
-  const simQuestionBubble = document.createElement('div');
-  const simQuestionText = document.createElement('p');
+  const progressbar = new Progressbar();
+  const step = 1;
+  const simContainer = document.createElement('main');
   const simTimerContainer = document.createElement('div');
   const simTimerIcon = document.createElement('img');
   const simTimer = document.createElement('p');
+  const simQuestionText = document.createElement('p');
 
   this.init = () => {
-    simMiddleContainer.classList.add('sim-middle-container');
-    simQuestionBubble.classList.add('sim-question-bubble');
-    simQuestionText.classList.add('sim-question-text');
+    simContainer.classList.add('sim-middle-container');
     simTimerContainer.classList.add('sim-timer-container');
     simTimerIcon.classList.add('sim-timer-icon');
     simTimer.classList.add('sim-timer');
+    simQuestionText.classList.add('sim-question-text');
 
     simTimerIcon.src = 'src/assets/images/icon-timer.svg';
-    simTimer.textContent = '남은 시간: 80초';
+    simTimer.textContent = '80:00';
 
+    progressbar.updateProgress(step);
     simTimerContainer.append(simTimerIcon, simTimer);
-    simQuestionBubble.appendChild(simQuestionText);
-    simMiddleContainer.append(simQuestionBubble, simTimerContainer);
+    progressbar.render(simContainer);
+    simContainer.append(simTimerContainer, simQuestionText);
   };
 
   this.updateQuestion = () => {
     const input = document.querySelector('.input-field');
     const userContent = input ? input.value : '';
     const timerId = timer(simTimer);
-    console.log(timerId);
 
     if (userContent.trim() !== '') {
       clearTimeout(timerId);
+      step += 1;
+      progressbar.updateProgress(step);
     }
   };
 
@@ -56,7 +59,7 @@ export default function SimMiddleScreen() {
   };
 
   this.render = (parentElement) => {
-    parentElement.prepend(simMiddleContainer);
+    parentElement.prepend(simContainer);
   };
 
   this.init();
