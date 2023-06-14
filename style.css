@@ -93,7 +93,7 @@ body.reduce {
   border: 1px solid rgb(220, 11, 11);
 }
 
-.footer-container {
+.footer-text-wrapper {
   height: 100%;
   display: flex;
   justify-content: center;

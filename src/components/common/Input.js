@@ -5,22 +5,18 @@ export default function Input() {
   const form = document.createElement('form');
   const inputField = document.createElement('input');
   const submitBtn = document.createElement('button');
+  const submitIcon = document.createElement('img');
 
   this.init = () => {
     inputContainer.classList.add('input-container');
-
-    // Input 입력창
     inputField.classList.add('input-field');
-    inputField.type = 'text';
-    // Input 입력 버튼
     submitBtn.classList.add('submit-btn');
-    const submitIcon = document.createElement('img');
-    submitIcon.src = './src/assets/images/icon-submit.svg';
-    submitBtn.appendChild(submitIcon);
-    // form 태그
-    form.appendChild(inputField);
-    form.appendChild(submitBtn);
 
+    inputField.type = 'text';
+    submitBtn.appendChild(submitIcon);
+    submitIcon.src = './src/assets/images/icon-submit.svg';
+
+    form.append(inputField, submitBtn);
     inputContainer.appendChild(form);
   };
 
@@ -29,33 +25,33 @@ export default function Input() {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const userContent = inputField.value.trim();
+      const userText = inputField.value.trim();
 
       // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
-      if (userContent === '') {
+      if (userText === '') {
         this.inputHelpText();
 
-        // qna페이지에서는 request 요청을 보냅니다.
-      } else if (window.location.pathname === '/') {
+        // qna페이지에서는 API 요청을 보냅니다.
+      } else if (window.location.hash === '#/') {
         const qaApi = new QaApi();
-        qaApi.updateQaData(userContent);
-
+        qaApi.updateQaData(userText);
         inputField.value = '';
 
-        // simulation 페이지에서는 로컬스토리지에 값을 저장합니다.
-      } else if (window.location.pathname === '/simulation') {
+        // 시뮬레이션페이지에서는 로컬스토리지에 값을 저장합니다.
+      } else if (window.location.pathname === '#/simulation') {
         const storedAnswers = localStorage.getItem('answers');
         const answers = storedAnswers ? JSON.parse(storedAnswers) : [];
-        answers.push(userContent);
+        answers.push(userText);
         localStorage.setItem('answers', JSON.stringify(answers));
         inputField.value = '';
       }
     });
   };
 
-  // help text
+  // help text를 추가합니다.
   this.inputHelpText = () => {
     const isExistHelpText = inputContainer.querySelector('.help-text');
+    //이미 화면에 help text가 있다면 더 이상 추가하지 않습니다.
     if (isExistHelpText) {
       return;
     }
