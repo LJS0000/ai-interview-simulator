@@ -2,7 +2,7 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
 /* -- constants -- */
 import qaPrompt from '../../constants/qaPrompt.js';
-import { sectionContainer } from '../../app.js';
+import { sectionContainer } from '../../App.js';
 /* -- components -- */
 import spinner from '../../components/common/spinner.js';
 

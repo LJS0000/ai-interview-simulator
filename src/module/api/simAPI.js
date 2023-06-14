@@ -1,7 +1,7 @@
 /* -- constants -- */
 import API_ENDPOINT from '../../configs/apiConfig.js';
 import simPrompt from '../../constants/simPrompt.js';
-import { sectionContainer } from '../../app.js';
+import { sectionContainer } from '../../App.js';
 /* -- components -- */
 import SimPage from '../../pages/SimPage.js';
 import spinner from '../../components/common/spinner.js';

@@ -5,12 +5,12 @@ import SimPage from './pages/SimPage.js';
 import Input from './components/common/Input.js';
 import Footer from './components/common/Footer.js';
 
-// querySelector를 줄이기 위해 export하여 사용합니다.
+/* querySelector를 줄이기 위해 export하여 사용합니다. */
 export const headerContainer = document.querySelector('#header-container');
 export const sectionContainer = document.querySelector('#section-container');
 export const footerContainer = document.querySelector('#footer-container');
 
-export function app() {
+export function App() {
   const router = new Router();
   const header = new Header();
   const qaPage = new QaPage();
@@ -18,17 +18,17 @@ export function app() {
   const input = new Input();
   const footer = new Footer();
 
-  const init = () => {
-    const path = window.location.pathname;
+  this.init = () => {
+    const hash = window.location.hash;
 
-    // 경로와 라우터를 생성합니다.
-    router.addRoute(`/ai-interview-simulator/#/`, () => {
+    /* 라우터를 생성하고 해당 화면을 렌더링합니다. */
+    router.addRoute(`#/`, () => {
       qaPage.render(sectionContainer);
     });
-    router.addRoute(`/ai-interview-simulator/#/simulation`, () => {
+    router.addRoute(`#/simulation`, () => {
       simPage.render(sectionContainer);
     });
-    router.navigate(path);
+    router.navigate(hash);
 
     // 헤더 네비게이션바
     header.addMenuItem('질문하기', `/ai-interview-simulator/#/`);
@@ -41,6 +41,4 @@ export function app() {
     // 푸터
     footer.render(footerContainer);
   };
-
-  return init();
 }

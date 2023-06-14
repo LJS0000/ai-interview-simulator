@@ -1,6 +1,6 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
 import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
-import { sectionContainer } from '../app.js';
+import { sectionContainer } from '../App.js';
 
 export default function SimPage() {
   const simStartScreen = new SimStartScreen();
