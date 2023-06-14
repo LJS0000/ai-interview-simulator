@@ -56,7 +56,7 @@ body.reduce {
 }
 
 /* --------메인-------- */
-#content-container {
+#section-container {
   grid-area: main;
   width: 70vw;
   margin: 0 auto;
@@ -93,7 +93,7 @@ body.reduce {
   border: 1px solid rgb(220, 11, 11);
 }
 
-.footer-container {
+.footer-text-wrapper {
   height: 100%;
   display: flex;
   justify-content: center;

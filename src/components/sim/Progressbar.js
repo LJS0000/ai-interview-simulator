@@ -15,6 +15,8 @@ export default function Progressbar() {
   };
 
   this.updateProgress = (step) => {
+    console.log(step);
+
     progressText.textContent = `${step}/3`;
 
     const status = (step / 3) * 100;

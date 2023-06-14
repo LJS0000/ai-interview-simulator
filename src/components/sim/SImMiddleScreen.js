@@ -1,3 +1,4 @@
+import { sectionContainer } from '../../App.js';
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
 
@@ -6,39 +7,49 @@ export default function SimMiddleScreen() {
   const timer = new Timer();
   let step = 0;
 
-  const simContainer = document.createElement('main');
+  const mainContainer = document.createElement('main');
   const questionText = document.createElement('p');
 
-  this.init = () => {
-    simContainer.classList.add('sim-container');
+  const init = () => {
+    mainContainer.classList.add('main-container');
     questionText.classList.add('question-text');
 
     progressbar.updateProgress(step);
 
-    progressbar.render(simContainer);
-    timer.render(simContainer);
-    simContainer.append(questionText);
+    progressbar.render(mainContainer);
+    timer.render(mainContainer);
+    mainContainer.append(questionText);
+
+    updateQuestions();
   };
 
-  this.updateQuestion = () => {
-    const storedQuestions = localStorage.getItem('questions');
-    const questions = storedQuestions
+  const updateQuestions = () => {
+    const storedQuestions = localStorage.getItem('simQuestionList');
+    const simQuestionList = storedQuestions
       ?.split('\n')
       .map((i) => i.replace(/^\d+\.\s*/, ''));
 
-    if (!questions) {
+    if (!simQuestionList) {
       questionText.textContent = '면접을 시작하겠습니다.';
     } else {
-      questionText.textContent = questions[step];
-      timer.start();
-      step += 1;
+      questionText.textContent = simQuestionList[step];
+      if (step < simQuestionList.length - 1) {
+        timer.start();
+        step += 1;
+        questionText.textContent = simQuestionList[step];
+      } else {
+        // 모든 질문을 마친 경우에 대한 처리
+        timer.stop();
+        questionText.textContent = '수고하셨습니다.';
+      }
     }
   };
 
-  this.render = (parentElement) => {
-    parentElement.prepend(simContainer);
+  this.render = () => {
+    sectionContainer.removeChild(sectionContainer.firstChild);
+    init();
+    sectionContainer.prepend(mainContainer);
   };
 
-  this.init();
-  this.updateQuestion();
+  init();
 }
