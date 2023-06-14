@@ -1,4 +1,4 @@
-import QaApi from '../../module/api/QaApi.js';
+import qaAPI from '../../module/api/qaAPI.js';
 
 export default function Input() {
   const inputContainer = document.createElement('div');
@@ -25,23 +25,23 @@ export default function Input() {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const userText = inputField.value.trim();
+      const submitText = inputField.value.trim();
+      const hash = window.location.hash;
 
       // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
-      if (userText === '') {
+      if (submitText === '') {
         this.inputHelpText();
 
         // qna페이지에서는 API 요청을 보냅니다.
-      } else if (window.location.hash === '#/') {
-        const qaApi = new QaApi();
-        qaApi.updateQaData(userText);
+      } else if (hash === '#/' || hash === '') {
+        qaAPI(submitText);
         inputField.value = '';
 
         // 시뮬레이션페이지에서는 로컬스토리지에 값을 저장합니다.
-      } else if (window.location.pathname === '#/simulation') {
+      } else if (hash === '#/simulation') {
         const storedAnswers = localStorage.getItem('answers');
         const answers = storedAnswers ? JSON.parse(storedAnswers) : [];
-        answers.push(userText);
+        answers.push(submitText);
         localStorage.setItem('answers', JSON.stringify(answers));
         inputField.value = '';
       }
