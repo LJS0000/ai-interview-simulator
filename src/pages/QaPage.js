@@ -1,8 +1,7 @@
-import { sectionContainer } from '../App.js';
-
 export default function QaPage() {
   const qaChatList = JSON.parse(localStorage.getItem('qaChatList'));
-  const qaContainer = document.createElement('main');
+  const mainContainer = document.createElement('main');
+  mainContainer.classList.add('main-container');
 
   /* 기존에 채팅한 데이터가 없을 때 가이드화면을 렌더링합니다. */
   const renderGuideScreen = () => {
@@ -15,7 +14,7 @@ export default function QaPage() {
       <p>면접에 대해 궁금한 점이 있으신가요?</p>
       <p>자유롭게 질문해 보세요.</p>`;
 
-    qaContainer.appendChild(guideContainer);
+    mainContainer.appendChild(guideContainer);
   };
 
   /**
@@ -44,7 +43,7 @@ export default function QaPage() {
       chatWrapper.appendChild(chatText);
       chatContainer.appendChild(chatWrapper);
     }
-    qaContainer.appendChild(chatContainer);
+    mainContainer.appendChild(chatContainer);
   };
 
   /**
@@ -53,7 +52,7 @@ export default function QaPage() {
    * @param {object} qaChatList
    */
   this.render = (parentElement) => {
-    qaContainer.innerHTML = '';
+    mainContainer.innerHTML = '';
 
     if (qaChatList) {
       renderChatScreen(qaChatList);
@@ -61,6 +60,6 @@ export default function QaPage() {
       renderGuideScreen();
     }
 
-    parentElement.prepend(qaContainer);
+    parentElement.prepend(mainContainer);
   };
 }

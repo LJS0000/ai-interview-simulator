@@ -1,3 +1,4 @@
+import { sectionContainer } from '../../App.js';
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
 
@@ -6,21 +7,23 @@ export default function SimMiddleScreen() {
   const timer = new Timer();
   let step = 0;
 
-  const simContainer = document.createElement('main');
+  const mainContainer = document.createElement('main');
   const questionText = document.createElement('p');
 
-  this.init = () => {
-    simContainer.classList.add('sim-container');
+  const init = () => {
+    mainContainer.classList.add('main-container');
     questionText.classList.add('question-text');
 
     progressbar.updateProgress(step);
 
-    progressbar.render(simContainer);
-    timer.render(simContainer);
-    simContainer.append(questionText);
+    progressbar.render(mainContainer);
+    timer.render(mainContainer);
+    mainContainer.append(questionText);
+
+    updateQuestion();
   };
 
-  this.updateQuestion = () => {
+  const updateQuestion = () => {
     const storedQuestions = localStorage.getItem('questions');
     const questions = storedQuestions
       ?.split('\n')
@@ -35,10 +38,9 @@ export default function SimMiddleScreen() {
     }
   };
 
-  this.render = (parentElement) => {
-    parentElement.prepend(simContainer);
+  this.render = () => {
+    sectionContainer.prepend(mainContainer);
   };
 
-  this.init();
-  this.updateQuestion();
+  init();
 }

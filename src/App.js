@@ -22,17 +22,17 @@ export function App() {
     const hash = window.location.hash;
 
     /* 라우터를 생성하고 해당 화면을 렌더링합니다. */
-    router.addRoute(`#/`, () => {
+    router.addRoute(`/`, () => {
       qaPage.render(sectionContainer);
     });
-    router.addRoute(`#/simulation`, () => {
+    router.addRoute(`/simulation`, () => {
       simPage.render(sectionContainer);
     });
     router.navigate(hash);
 
     // 헤더 네비게이션바
-    header.addMenuItem('질문하기', `/ai-interview-simulator/#/`);
-    header.addMenuItem('모의면접', `/ai-interview-simulator/#/simulation`);
+    header.addMenuItem('질문하기', `/`);
+    header.addMenuItem('모의면접', `/simulation`);
     header.render(headerContainer);
 
     // 입력창
