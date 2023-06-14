@@ -1,4 +1,4 @@
-import { section } from '../../index.js';
+import { sectionContainer } from '../app.js';
 
 export default function QaPage() {
   const qaContainer = document.createElement('main');
@@ -57,7 +57,7 @@ export default function QaPage() {
       initGuideScreen();
     }
 
-    section.appendChild(qaContainer);
+    sectionContainer.appendChild(qaContainer);
   };
 
   return {

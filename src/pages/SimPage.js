@@ -1,17 +1,17 @@
 import SimStartScreen from '../components/sim/SimStartScreen.js';
 import SimMiddleScreen from '../components/sim/SImMiddleScreen.js';
-import { section } from '../../index.js';
+import { sectionContainer } from '../app.js';
 
 export default function SimPage() {
   const simStartScreen = new SimStartScreen();
   const simMiddleScreen = new SimMiddleScreen();
 
   this.render = () => {
-    simStartScreen.render(section);
+    simStartScreen.render(sectionContainer);
   };
 
   this.progress = () => {
-    section.removeChild(section.firstChild);
-    simMiddleScreen.render(section);
+    sectionContainer.removeChild(section.firstChild);
+    simMiddleScreen.render(sectionContainer);
   };
 }
