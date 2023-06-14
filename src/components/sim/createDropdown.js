@@ -2,11 +2,13 @@ import options from '../../constants/dropdownOptions.js';
 
 export default function createDropdown() {
   const dropdown = document.createElement('select');
+  const placeholderOption = document.createElement('option');
+
   dropdown.classList.add('dropdown');
 
-  const placeholderOption = document.createElement('option');
   placeholderOption.value = '';
   placeholderOption.text = '--선택--';
+
   dropdown.appendChild(placeholderOption);
 
   for (const optionText of options) {
