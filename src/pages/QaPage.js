@@ -1,11 +1,11 @@
-export default function QaPage() {
-  const qaContainer = document.createElement('main');
-  const qaChatList = JSON.parse(localStorage.getItem('qaChatList'));
+import { sectionContainer } from '../App.js';
 
-  qaContainer.classList.add('qa-container');
+export default function QaPage() {
+  const qaChatList = JSON.parse(localStorage.getItem('qaChatList'));
+  const qaContainer = document.createElement('main');
 
   /* 기존에 채팅한 데이터가 없을 때 가이드화면을 렌더링합니다. */
-  this.renderGuideScreen = () => {
+  const renderGuideScreen = () => {
     const guideContainer = document.createElement('div');
 
     guideContainer.classList.add('guide-container');
@@ -22,32 +22,28 @@ export default function QaPage() {
    * 채팅화면을 렌더링합니다.
    * @param {object} qaChatList
    */
-  this.renderChatScreen = (qaChatList) => {
-    console.log(qaChatList);
+  const renderChatScreen = (qaChatList) => {
     const chatContainer = document.createElement('ul');
     chatContainer.classList.add('chat-container');
 
-    for (const i of qaChatList) {
-      for (const chat of i) {
-        const { role, content } = chat;
+    for (let i = 2; i < qaChatList.length; i++) {
+      const { role, content } = qaChatList[i];
 
-        const chatWrapper = document.createElement('li');
-        const chatText = document.createElement('p');
-        chatWrapper.classList.add('chat-wrapper');
-        chatText.classList.add('chat-text');
-        chatText.textContent = content;
+      const chatWrapper = document.createElement('li');
+      const chatText = document.createElement('p');
+      chatWrapper.classList.add('chat-wrapper');
+      chatText.classList.add('chat-text');
+      chatText.textContent = content;
 
-        if (role === 'user') {
-          chatWrapper.classList.add('user-chat');
-        } else if (role === 'system') {
-          chatWrapper.classList.add('system-chat');
-        }
-
-        chatWrapper.appendChild(chatText);
-        chatContainer.appendChild(chatWrapper);
+      if (role === 'user') {
+        chatWrapper.classList.add('user-chat-wrapper');
+      } else if (role === 'assistant') {
+        chatWrapper.classList.add('assistant-chat-wrapper');
       }
-    }
 
+      chatWrapper.appendChild(chatText);
+      chatContainer.appendChild(chatWrapper);
+    }
     qaContainer.appendChild(chatContainer);
   };
 
@@ -57,13 +53,14 @@ export default function QaPage() {
    * @param {object} qaChatList
    */
   this.render = (parentElement) => {
-    console.log('렌더합니다');
+    qaContainer.innerHTML = '';
+
     if (qaChatList) {
       renderChatScreen(qaChatList);
     } else {
       renderGuideScreen();
     }
 
-    parentElement.appendChild(qaContainer);
+    parentElement.prepend(qaContainer);
   };
 }

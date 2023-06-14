@@ -4,6 +4,7 @@ import API_ENDPOINT from '../../configs/apiConfig.js';
 import qaPrompt from '../../constants/qaPrompt.js';
 import { sectionContainer } from '../../App.js';
 /* -- components -- */
+import QaPage from '../../pages/QaPage.js';
 import spinner from '../../components/common/spinner.js';
 
 export default function qaAPI(submitText) {
@@ -24,9 +25,9 @@ export default function qaAPI(submitText) {
 
   /**
    * 갱신된 qaChatList 로컬스토리지에 저장합니다.
-   * @param {string} submitText
+   * @param {object} qaChatList
    */
-  const saveQaChatList = () => {
+  const saveQaChatList = (qaChatList) => {
     localStorage.setItem('qaChatList', JSON.stringify(qaChatList));
   };
 
@@ -53,9 +54,11 @@ export default function qaAPI(submitText) {
           content: res.choices[0].message.content,
         };
         qaChatList.push(qaRes);
+        return qaChatList;
       })
-      .then(() => {
-        saveQaChatList();
+      .then((qaChatList) => {
+        saveQaChatList(qaChatList);
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
