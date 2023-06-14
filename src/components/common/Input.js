@@ -33,7 +33,7 @@ export default function Input() {
 
       // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
       if (userContent === '') {
-        inputHelpText();
+        this.inputHelpText();
 
         // qna페이지에서는 request 요청을 보냅니다.
       } else if (window.location.pathname === '/') {
