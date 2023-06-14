@@ -3,10 +3,10 @@ export default function Timer() {
   const timerIcon = document.createElement('img');
   const timerText = document.createElement('p');
   let timerId;
-  let seconds = 80;
+  let seconds = 5; // 테스트용. 80초로 수정해야함.
   let milliseconds = 0;
 
-  this.init = () => {
+  const init = () => {
     timerContainer.classList.add('timer-container');
     timerIcon.classList.add('timer-icon');
     timerText.classList.add('timer-text');
@@ -17,7 +17,7 @@ export default function Timer() {
     timerContainer.append(timerIcon, timerText);
   };
 
-  this.decreaseTime = () => {
+  const decreaseTime = () => {
     milliseconds -= 1;
     if (milliseconds < 0) {
       seconds -= 1;
@@ -29,12 +29,12 @@ export default function Timer() {
       .padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
 
     if (seconds <= 0 && milliseconds <= 0) {
-      clearInterval(timerId);
+      this.stop();
     }
   };
 
   this.start = () => {
-    timerId = setInterval(this.decreaseTime, 10);
+    timerId = setInterval(decreaseTime, 10);
   };
 
   this.stop = () => {
@@ -45,5 +45,5 @@ export default function Timer() {
     parentElement.prepend(timerContainer);
   };
 
-  this.init();
+  init();
 }

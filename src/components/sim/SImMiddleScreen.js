@@ -20,21 +20,28 @@ export default function SimMiddleScreen() {
     timer.render(mainContainer);
     mainContainer.append(questionText);
 
-    updateQuestion();
+    updateQuestions();
   };
 
-  const updateQuestion = () => {
-    const storedQuestions = localStorage.getItem('questions');
-    const questions = storedQuestions
+  const updateQuestions = () => {
+    step += 1;
+    console.log(step);
+    const storedQuestions = localStorage.getItem('simQuestionList');
+    const simQuestionList = storedQuestions
       ?.split('\n')
       .map((i) => i.replace(/^\d+\.\s*/, ''));
 
-    if (!questions) {
+    if (!simQuestionList) {
       questionText.textContent = '면접을 시작하겠습니다.';
     } else {
-      questionText.textContent = questions[step];
-      timer.start();
-      step += 1;
+      if (step < simQuestionList.length - 1) {
+        questionText.textContent = simQuestionList[step];
+        timer.start();
+      } else {
+        // 모든 질문을 마친 경우에 대한 처리
+        timer.stop();
+        questionText.textContent = '수고하셨습니다.';
+      }
     }
   };
 
