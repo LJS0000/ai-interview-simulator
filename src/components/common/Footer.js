@@ -1,19 +1,19 @@
 export default function Footer() {
-  const footerContainer = document.createElement('div');
+  const footerTextWrapper = document.createElement('div');
   const footerText = document.createElement('p');
 
   this.init = () => {
-    footerContainer.classList.add('footer-container');
-
+    footerTextWrapper.classList.add('footer-text-wrapper');
     footerText.classList.add('footer-text');
+
     footerText.textContent =
       'Copyright 2023. 이지수 All pictures cannot be copied without permission';
 
-    footerContainer.appendChild(footerText);
+    footerTextWrapper.appendChild(footerText);
   };
 
   this.render = (parentElement) => {
-    parentElement.appendChild(footerContainer);
+    parentElement.appendChild(footerTextWrapper);
   };
 
   this.init();
