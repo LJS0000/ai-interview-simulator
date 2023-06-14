@@ -17,17 +17,17 @@ export default function app() {
     const path = window.location.pathname;
 
     // 경로와 라우터를 생성합니다.
-    router.addRoute(`/ai-interview-simulator/`, () => {
+    router.addRoute(`/ai-interview-simulator/#/`, () => {
       qaPage.render(document.getElementById('content-container'));
     });
-    router.addRoute(`/ai-interview-simulator/simulation`, () => {
+    router.addRoute(`/ai-interview-simulator/#/simulation`, () => {
       simPage.render(document.getElementById('content-container'));
     });
     router.navigate(path);
 
     // 헤더 네비게이션바
-    header.addMenuItem('질문하기', `/ai-interview-simulator/`);
-    header.addMenuItem('모의면접', `/ai-interview-simulator/simulation`);
+    header.addMenuItem('질문하기', `/ai-interview-simulator/#/`);
+    header.addMenuItem('모의면접', `/ai-interview-simulator/#/simulation`);
     header.render(document.getElementById('header-container'));
 
     // 입력창
