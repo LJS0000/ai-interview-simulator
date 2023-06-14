@@ -38,11 +38,9 @@ export default function simAPI(userOption) {
       .then((res) => res.json())
       .then((res) => {
         /* 예상 질문을 한 번에 받아서 로컬스토리지에 저장합니다. */
+        const simPage = new SimPage();
         const simQuestionList = res.choices[0].message.content;
         localStorage.setItem('simQuestionList', simQuestionList);
-      })
-      .then(() => {
-        const simPage = new SimPage();
         simPage.progress();
       })
       .catch((err) => {

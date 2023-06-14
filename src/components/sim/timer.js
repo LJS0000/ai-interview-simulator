@@ -29,7 +29,7 @@ export default function Timer() {
       .padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
 
     if (seconds <= 0 && milliseconds <= 0) {
-      this.stop();
+      clearInterval(timerId);
     }
   };
 

@@ -48,9 +48,7 @@ export default function SimStartScreen() {
   const submitHandler = () => {
     simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const simPage = new SimPage();
       simAPI(dropdown.value);
-      simPage.progress();
     });
   };
 

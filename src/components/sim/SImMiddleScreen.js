@@ -24,8 +24,6 @@ export default function SimMiddleScreen() {
   };
 
   const updateQuestions = () => {
-    step += 1;
-    console.log(step);
     const storedQuestions = localStorage.getItem('simQuestionList');
     const simQuestionList = storedQuestions
       ?.split('\n')
@@ -34,9 +32,11 @@ export default function SimMiddleScreen() {
     if (!simQuestionList) {
       questionText.textContent = '면접을 시작하겠습니다.';
     } else {
+      questionText.textContent = simQuestionList[step];
       if (step < simQuestionList.length - 1) {
-        questionText.textContent = simQuestionList[step];
         timer.start();
+        step += 1;
+        questionText.textContent = simQuestionList[step];
       } else {
         // 모든 질문을 마친 경우에 대한 처리
         timer.stop();
@@ -46,6 +46,8 @@ export default function SimMiddleScreen() {
   };
 
   this.render = () => {
+    sectionContainer.removeChild(sectionContainer.firstChild);
+    init();
     sectionContainer.prepend(mainContainer);
   };
 
