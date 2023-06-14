@@ -1,4 +1,4 @@
-export default function SidebarHandler() {
+export default function sidebarHandler() {
   const sidebar = document.querySelector('#sidebar-container');
 
   // eventHandler로 호출했기 때문에
