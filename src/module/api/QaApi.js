@@ -1,6 +1,7 @@
 import API_ENDPOINT from '../../configs/apiConfig.js';
 import qaData from '../../constants/qaData.js';
 import spinner from '../../components/common/spinner.js';
+import { section } from '../../../index.js';
 
 export default function QaApi() {
   // 로컬 스토리지에서 채팅 데이터를 가져오며
@@ -31,7 +32,6 @@ export default function QaApi() {
   // 학습용 qaData 데이터를 fetch 합니다.
   const fetchRequest = (userContent) => {
     // 로딩 화면 표시
-    const section = document.getElementById('content-container');
     section.appendChild(spinner());
 
     fetch(API_ENDPOINT, {

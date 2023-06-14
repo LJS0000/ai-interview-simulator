@@ -56,7 +56,7 @@ body.reduce {
 }
 
 /* --------메인-------- */
-#content-container {
+#section-container {
   grid-area: main;
   width: 70vw;
   margin: 0 auto;

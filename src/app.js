@@ -4,6 +4,7 @@ import QaPage from './pages/QaPage.js';
 import SimPage from './pages/SimPage.js';
 import Input from './components/common/Input.js';
 import Footer from './components/common/Footer.js';
+import { section } from '../index.js';
 
 export default function app() {
   const router = new Router();
@@ -18,10 +19,10 @@ export default function app() {
 
     // 경로와 라우터를 생성합니다.
     router.addRoute(`/ai-interview-simulator/#/`, () => {
-      qaPage.render(document.getElementById('content-container'));
+      qaPage.render(section);
     });
     router.addRoute(`/ai-interview-simulator/#/simulation`, () => {
-      simPage.render(document.getElementById('content-container'));
+      simPage.render(section);
     });
     router.navigate(path);
 
@@ -31,7 +32,7 @@ export default function app() {
     header.render(document.getElementById('header-container'));
 
     // 입력창
-    input.render(document.getElementById('content-container'));
+    input.render(section);
 
     // 푸터
     footer.render(document.getElementById('footer-container'));

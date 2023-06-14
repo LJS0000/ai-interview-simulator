@@ -1,3 +1,5 @@
+import { section } from '../../index.js';
+
 export default function QaPage() {
   const qaContainer = document.createElement('main');
   qaContainer.classList.add('qa-container');
@@ -46,8 +48,6 @@ export default function QaPage() {
   };
 
   const render = () => {
-    const section = document.querySelector('#content-container');
-
     // 로컬스토리지에 기존 데이터가 있으면 chat 화면을
     // 없다면 신규 사용자를 위한 화면을 렌더합니다.
     const data = localStorage.getItem('qaChatList');
