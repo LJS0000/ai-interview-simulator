@@ -1,7 +1,6 @@
 export default function Router() {
   /* 등록된 경로와 해당하는 콜백 함수를 저장합니다. */
   const routes = [];
-  const currentPath = window.location.pathname;
 
   /* 히스토리 변경 작업이 실행되면, handleRouteChange를 실행합니다. */
   const init = () => {
@@ -12,6 +11,7 @@ export default function Router() {
 
   /* 등록된 경로(routes)와 현재 경로(currentPath)를 비교하여 렌더링합니다. */
   const handleRouteChange = () => {
+    const currentPath = window.location.pathname;
     for (const route of routes) {
       if (route.path === currentPath) {
         route.callback();
@@ -30,7 +30,7 @@ export default function Router() {
   };
 
   /**
-   * 정적 라우팅을 구현합니다.
+   * 주소에서 .html 을 제거하고 이동합니다.
    * @param {string} path
    * */
   this.navigate = (path) => {

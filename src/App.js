@@ -19,7 +19,7 @@ export function App() {
   const footer = new Footer();
 
   this.init = () => {
-    const hash = window.location.hash;
+    const path = window.location.pathname;
 
     /* 라우터를 생성하고 해당 화면을 렌더링합니다. */
     router.addRoute(`/`, () => {
@@ -28,7 +28,7 @@ export function App() {
     router.addRoute(`/simulation`, () => {
       simPage.render(sectionContainer);
     });
-    router.navigate(hash);
+    router.navigate(path);
 
     // 헤더 네비게이션바
     header.addMenuItem('질문하기', `/`);

@@ -7,12 +7,10 @@ export default function SimPage(mainContainer) {
   const simMiddleScreen = new SimMiddleScreen();
 
   this.progress = () => {
-    init();
     simMiddleScreen.render();
   };
 
   this.render = () => {
-    init();
     simStartScreen.render();
   };
 }
