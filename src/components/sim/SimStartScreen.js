@@ -1,6 +1,8 @@
-import createDropdown from './createDropdown.js';
+/* ----- api ----- */
+import simAPI from '../../module/api/simAPI.js';
+/* -- components -- */
 import SimPage from '../../pages/SimPage.js';
-import SimApi from '../../module/api/SimApi.js';
+import createDropdown from './createDropdown.js';
 
 export default function SimStartScreen() {
   const mainContainer = document.createElement('main');
@@ -27,7 +29,7 @@ export default function SimStartScreen() {
     mainContainer.append(clockIcon, simStartText, simStartForm);
   };
 
-  // 유저가 옵션을 선택하지 않았을 때는 button을 disabled 합니다.
+  /* 유저가 option을 선택하지 않았을 때 button을 disabled 합니다. */
   this.btnHandler = () => {
     simStartForm.addEventListener('input', (e) => {
       if (dropdown.value === '' || dropdown.value === '--선택--') {
@@ -42,9 +44,8 @@ export default function SimStartScreen() {
   this.submitHandler = () => {
     simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const simApi = new SimApi();
       const simPage = new SimPage();
-      simApi.updateSimData(dropdown.value);
+      simAPI(dropdown.value);
       simPage.progress();
     });
   };
