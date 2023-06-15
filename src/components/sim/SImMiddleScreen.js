@@ -24,8 +24,7 @@ export default function SimMiddleScreen() {
   };
 
   this.updateQuestion = (simQuestionList) => {
-    timer.start();
-    console.log(`밖: ${step}`);
+    console.log(simQuestionList);
 
     if (step > simQuestionList.length - 1) {
       // 모든 질문을 마친 경우에 대한 처리
@@ -34,11 +33,11 @@ export default function SimMiddleScreen() {
       this.render();
       return;
     } else {
-      console.log(`안: ${step}`);
       questionText.textContent = simQuestionList[step];
       this.render();
     }
 
+    timer.start();
     step += 1;
     setTimeout(() => {
       this.updateQuestion(simQuestionList);

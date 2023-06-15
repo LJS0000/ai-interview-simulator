@@ -19,7 +19,6 @@ export default function Timer() {
 
   const decreaseTime = () => {
     if (seconds <= 0 && milliseconds <= 0) {
-      init();
       clearInterval(timerId);
     } else {
       milliseconds -= 1;
@@ -27,13 +26,15 @@ export default function Timer() {
         seconds -= 1;
         milliseconds = 99;
       }
+      timerText.textContent = `${seconds
+        .toString()
+        .padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
     }
-    timerText.textContent = `${seconds
-      .toString()
-      .padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
   };
 
   this.start = () => {
+    seconds = 5;
+    milliseconds = 0;
     timerId = setInterval(decreaseTime, 10);
   };
 
