@@ -25,6 +25,16 @@ body.reduce {
   grid-template-columns: 1fr 3fr; /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
+/* --------공용-------- */
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000 0.3;
+}
+
 /* --------헤더-------- */
 #header-container {
   grid-area: header;

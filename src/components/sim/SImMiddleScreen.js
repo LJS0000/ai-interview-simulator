@@ -1,10 +1,13 @@
 import { sectionContainer } from '../../app.js';
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
+import button from '../common/button.js';
+import Modal from '../common/Modal.js';
 
 export default function SimMiddleScreen() {
   const progressbar = new Progressbar();
   const timer = new Timer();
+  const modal = new Modal();
 
   let step = 0;
 
