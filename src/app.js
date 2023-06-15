@@ -10,7 +10,7 @@ export const headerContainer = document.querySelector('#header-container');
 export const sectionContainer = document.querySelector('#section-container');
 export const footerContainer = document.querySelector('#footer-container');
 
-export function App() {
+export function app() {
   const router = new Router();
   const header = new Header();
   const qaPage = new QaPage();

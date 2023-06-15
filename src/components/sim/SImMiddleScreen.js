@@ -1,4 +1,4 @@
-import { sectionContainer } from '../../App.js';
+import { sectionContainer } from '../../app.js';
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
 

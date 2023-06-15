@@ -1,4 +1,4 @@
-import { sectionContainer } from '../../App.js';
+import { sectionContainer } from '../../app.js';
 /* ----- api ----- */
 import simAPI from '../../module/api/simAPI.js';
 /* -- components -- */
