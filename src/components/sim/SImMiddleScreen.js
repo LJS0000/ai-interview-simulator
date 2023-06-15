@@ -39,6 +39,7 @@ export default function SimMiddleScreen() {
 
     timer.start();
     step += 1;
+    progressbar.updateProgress(step);
     setTimeout(() => {
       this.updateQuestion(simQuestionList);
     }, 5500); // 5.5초의 지연
