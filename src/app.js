@@ -10,7 +10,7 @@ export const headerContainer = document.querySelector('#header-container');
 export const sectionContainer = document.querySelector('#section-container');
 export const footerContainer = document.querySelector('#footer-container');
 
-export function App() {
+export function app() {
   const router = new Router();
   const header = new Header();
   const qaPage = new QaPage();
@@ -18,21 +18,21 @@ export function App() {
   const input = new Input();
   const footer = new Footer();
 
-  this.init = () => {
+  const init = () => {
     const path = window.location.pathname;
 
     /* 라우터를 생성하고 해당 화면을 렌더링합니다. */
-    router.addRoute(`/`, () => {
+    router.addRoute(`/ai-interview-simulator/`, () => {
       qaPage.render(sectionContainer);
     });
-    router.addRoute(`/simulation`, () => {
+    router.addRoute(`/ai-interview-simulator/simulation`, () => {
       simPage.render(sectionContainer);
     });
     router.navigate(path);
 
     // 헤더 네비게이션바
-    header.addMenuItem('질문하기', `/`);
-    header.addMenuItem('모의면접', `/simulation`);
+    header.addMenuItem('질문하기', `/ai-interview-simulator/`);
+    header.addMenuItem('모의면접', `/ai-interview-simulator/simulation`);
     header.render(headerContainer);
 
     // 입력창
@@ -41,4 +41,6 @@ export function App() {
     // 푸터
     footer.render(footerContainer);
   };
+
+  init();
 }

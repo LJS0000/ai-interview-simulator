@@ -1,4 +1,4 @@
-import sidebarHandler from '../../module/event-handler/SidebarHandler.js';
+import sidebarHandler from '../../module/event-handler/sidebarHandler.js';
 
 export default function Header() {
   const navbar = document.createElement('nav');
