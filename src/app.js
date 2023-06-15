@@ -18,7 +18,7 @@ export function app() {
   const input = new Input();
   const footer = new Footer();
 
-  this.init = () => {
+  const init = () => {
     const path = window.location.pathname;
 
     /* 라우터를 생성하고 해당 화면을 렌더링합니다. */
@@ -41,4 +41,6 @@ export function app() {
     // 푸터
     footer.render(footerContainer);
   };
+
+  init();
 }
