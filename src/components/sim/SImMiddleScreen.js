@@ -1,10 +1,15 @@
 import { sectionContainer } from '../../app.js';
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
+import button from '../common/button.js';
+import Modal from '../common/Modal.js';
+import toggleHandler from '../../module/event-handler/toggleHandler.js';
 
 export default function SimMiddleScreen() {
   const progressbar = new Progressbar();
   const timer = new Timer();
+  const modal = new Modal();
+
   let step = 0;
 
   const mainContainer = document.createElement('main');
@@ -14,40 +19,46 @@ export default function SimMiddleScreen() {
     mainContainer.classList.add('main-container');
     questionText.classList.add('question-text');
 
+    questionText.textContent = '면접을 시작하겠습니다.';
     progressbar.updateProgress(step);
 
     progressbar.render(mainContainer);
     timer.render(mainContainer);
     mainContainer.append(questionText);
-
-    updateQuestions();
   };
 
-  const updateQuestions = () => {
-    const storedQuestions = localStorage.getItem('simQuestionList');
-    const simQuestionList = storedQuestions
-      ?.split('\n')
-      .map((i) => i.replace(/^\d+\.\s*/, ''));
+  const renderButtons = () => {
+    const answerButton = button('내 답변 보기', 'click', toggleHandler);
+    const restartButton = button('다시하기', 'click', toggleHandler);
 
-    if (!simQuestionList) {
-      questionText.textContent = '면접을 시작하겠습니다.';
+    mainContainer.append(answerButton, restartButton);
+  };
+
+  this.updateQuestion = (simQuestionList) => {
+    console.log(simQuestionList);
+
+    if (step > simQuestionList.length - 1) {
+      // 모든 질문을 마친 경우에 대한 처리
+      timer.stop();
+      questionText.textContent = '수고하셨습니다.';
+      renderButtons();
+      this.render();
+      return;
     } else {
       questionText.textContent = simQuestionList[step];
-      if (step < simQuestionList.length - 1) {
-        timer.start();
-        step += 1;
-        questionText.textContent = simQuestionList[step];
-      } else {
-        // 모든 질문을 마친 경우에 대한 처리
-        timer.stop();
-        questionText.textContent = '수고하셨습니다.';
-      }
+      this.render();
     }
+
+    timer.start();
+    step += 1;
+    progressbar.updateProgress(step);
+    setTimeout(() => {
+      this.updateQuestion(simQuestionList);
+    }, 5500); // 5.5초의 지연
   };
 
   this.render = () => {
     sectionContainer.removeChild(sectionContainer.firstChild);
-    init();
     sectionContainer.prepend(mainContainer);
   };
 

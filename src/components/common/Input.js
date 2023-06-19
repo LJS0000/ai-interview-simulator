@@ -1,11 +1,15 @@
 import qaAPI from '../../module/api/qaAPI.js';
+import SimMiddleScreen from '../sim/SImMiddleScreen.js';
 
 export default function Input() {
+  const simMiddleScreen = new SimMiddleScreen();
+
   const inputContainer = document.createElement('div');
   const form = document.createElement('form');
   const inputField = document.createElement('input');
   const submitBtn = document.createElement('button');
   const submitIcon = document.createElement('img');
+  const userAnswer = [];
 
   this.init = () => {
     inputContainer.classList.add('input-container');
@@ -26,24 +30,24 @@ export default function Input() {
       e.preventDefault();
 
       const submitText = inputField.value.trim();
-      const hash = window.location.hash;
+      const path = window.location.pathname;
 
       // 빈 값을 제출하면 help text를 띄우고 제출을 막습니다.
       if (submitText === '') {
         this.inputHelpText();
 
         // qna페이지에서는 API 요청을 보냅니다.
-      } else if (hash === '#/' || hash === '') {
+      } else if (path === '/ai-interview-simulator/') {
         qaAPI(submitText);
         inputField.value = '';
 
-        // 시뮬레이션페이지에서는 로컬스토리지에 값을 저장합니다.
-      } else if (hash === '#/simulation') {
-        const storedAnswers = localStorage.getItem('answers');
-        const answers = storedAnswers ? JSON.parse(storedAnswers) : [];
-        answers.push(submitText);
-        localStorage.setItem('answers', JSON.stringify(answers));
+        // 시뮬레이션페이지에서는 input 값을 변수에 저장합니다.
+      } else if (path === '/ai-interview-simulator/simulation') {
+        userAnswer.push(submitText);
+        console.log(userAnswer);
         inputField.value = '';
+        simMiddleScreen.updateQuestion();
+        return userAnswer;
       }
     });
   };

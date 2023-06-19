@@ -4,6 +4,7 @@ import simPrompt from '../../constants/simPrompt.js';
 import { sectionContainer } from '../../app.js';
 /* -- components -- */
 import SimPage from '../../pages/SimPage.js';
+import SimMiddleScreen from '../../components/sim/SImMiddleScreen.js';
 import spinner from '../../components/common/spinner.js';
 
 export default function simAPI(userOption) {
@@ -26,6 +27,9 @@ export default function simAPI(userOption) {
   const fetchRequest = (simPrompt) => {
     /* pending 상태일 때 spinner를 띄웁니다. */
     sectionContainer.appendChild(spinner());
+    /* 화면을 리렌더링 합니다. */
+    const simPage = new SimPage();
+    simPage.progress();
 
     fetch(API_ENDPOINT, {
       method: 'POST',
@@ -38,10 +42,12 @@ export default function simAPI(userOption) {
       .then((res) => res.json())
       .then((res) => {
         /* 예상 질문을 한 번에 받아서 로컬스토리지에 저장합니다. */
-        const simPage = new SimPage();
-        const simQuestionList = res.choices[0].message.content;
-        localStorage.setItem('simQuestionList', simQuestionList);
-        simPage.progress();
+        const simMiddleScreen = new SimMiddleScreen();
+        const simRawData = res.choices[0].message.content;
+        const simQuestionList = simRawData
+          ?.split('\n')
+          .map((i) => i.replace(/^\d+\.\s*/, ''));
+        simMiddleScreen.updateQuestion(simQuestionList);
       })
       .catch((err) => {
         console.log(err);
