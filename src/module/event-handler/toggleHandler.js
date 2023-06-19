@@ -1,4 +1,4 @@
-export default function sidebarHandler() {
+export default function toggleHandler() {
   const sidebar = document.querySelector('#sidebar-container');
 
   const toggleElem = () => {

@@ -1,4 +1,4 @@
-import sidebarHandler from '../../module/event-handler/sidebarHandler.js';
+import toggleHandler from '../../module/event-handler/toggleHandler.js';
 
 export default function Header() {
   const navbar = document.createElement('nav');
@@ -15,7 +15,7 @@ export default function Header() {
     drawerIcon.src = './src/assets/images/icon-drawer.svg';
     sidebarBtn.appendChild(drawerIcon);
     // 사이드바 토글 이벤트 (수정 필요)
-    sidebarBtn.addEventListener('click', sidebarHandler);
+    sidebarBtn.addEventListener('click', toggleHandler);
     // 헤더 로고
     logo.classList.add('logo');
     const logoImg = document.createElement('img');

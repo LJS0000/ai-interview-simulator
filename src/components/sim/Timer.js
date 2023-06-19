@@ -3,7 +3,7 @@ export default function Timer() {
   const timerIcon = document.createElement('img');
   const timerText = document.createElement('p');
   let timerId;
-  let seconds = 5; // 테스트용. 80초로 수정해야함.
+  let seconds = 80;
   let milliseconds = 0;
 
   const init = () => {
@@ -33,7 +33,7 @@ export default function Timer() {
   };
 
   this.start = () => {
-    seconds = 5;
+    seconds = 80;
     milliseconds = 0;
     timerId = setInterval(decreaseTime, 10);
   };

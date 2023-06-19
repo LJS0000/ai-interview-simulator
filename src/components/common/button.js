@@ -1,8 +1,8 @@
 export default function button(text, event, callback) {
-  const simBtn = document.createElement('button');
-  simBtn.classList.add('sim-btn');
-  simBtn.textContent = `${text}`;
-  simBtn.addEventListener(event, callback);
+  const btn = document.createElement('button');
+  btn.classList.add('sim-btn');
+  btn.textContent = `${text}`;
+  btn.addEventListener(event, callback);
 
-  return simBtn;
+  return btn;
 }
