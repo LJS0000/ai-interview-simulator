@@ -11,12 +11,21 @@ export default function Input() {
   const submitIcon = document.createElement('img');
   const userAnswer = [];
 
+  const enterEvent = () => {
+    if (window.event.keyCode == 13) {
+      if (!event.shiftKey) {
+        submitHandler();
+      }
+    }
+  };
+
   this.init = () => {
     inputContainer.classList.add('input-container');
     form.classList.add('form');
     inputField.classList.add('input-field');
     submitBtn.classList.add('submit-btn');
 
+    inputField.onkeydown = enterEvent;
     submitIcon.src = './src/assets/images/icon-submit.svg';
 
     submitBtn.appendChild(submitIcon);
@@ -25,8 +34,9 @@ export default function Input() {
   };
 
   // api 모듈에 데이터를 보냅니다.
-  this.submitHandler = () => {
-    form.addEventListener('submit', (e) => {
+  const submitHandler = () => {
+    console.log(form);
+    form.addEventListener('input', (e) => {
       e.preventDefault();
 
       const submitText = inputField.value.trim();
@@ -44,7 +54,6 @@ export default function Input() {
         // 시뮬레이션페이지에서는 input 값을 변수에 저장합니다.
       } else if (path === '/ai-interview-simulator/simulation') {
         userAnswer.push(submitText);
-        console.log(userAnswer);
         inputField.value = '';
         simMiddleScreen.updateQuestion();
         return userAnswer;
@@ -70,5 +79,4 @@ export default function Input() {
   };
 
   this.init();
-  this.submitHandler();
 }
