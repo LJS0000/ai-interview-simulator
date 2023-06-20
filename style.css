@@ -97,11 +97,20 @@ body.reduce {
   margin: 0 auto;
   display: grid;
   grid-template-rows: 1fr 10vh;
-  border: 1px solid rgb(0, 13, 255);
 }
 
-.qa-container .sim-container {
-  border: 1px solid rgb(154, 154, 43);
+.main-container {
+  height: 76vh;
+  padding: 0.5em;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; /* 스크롤을 하단 고정 */
+  -ms-overflow-style: none; /* 스크롤 - 인터넷 익스플로러 */
+  scrollbar-width: none; /* 스크롤 - 파이어폭스 */
+}
+/* 스크롤 - 크롬, 사파리, 오페라, 엣지 */
+.main-container::-webkit-scrollbar {
+  display: none;
 }
 
 .progressbar {
@@ -127,6 +136,7 @@ body.reduce {
 
 /* --------Input-------- */
 .input-container {
+  height: 10vh;
   border: 3px solid #559a5c;
 }
 
