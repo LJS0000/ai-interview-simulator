@@ -6,20 +6,20 @@ export default function Input() {
 
   const inputContainer = document.createElement('div');
   const form = document.createElement('form');
-  const inputField = document.createElement('input');
+  const inputField = document.createElement('textarea');
   const submitBtn = document.createElement('button');
   const submitIcon = document.createElement('img');
   const userAnswer = [];
 
   this.init = () => {
     inputContainer.classList.add('input-container');
+    form.classList.add('form');
     inputField.classList.add('input-field');
     submitBtn.classList.add('submit-btn');
 
-    inputField.type = 'text';
-    submitBtn.appendChild(submitIcon);
     submitIcon.src = './src/assets/images/icon-submit.svg';
 
+    submitBtn.appendChild(submitIcon);
     form.append(inputField, submitBtn);
     inputContainer.appendChild(form);
   };
@@ -62,7 +62,7 @@ export default function Input() {
     const helpText = document.createElement('p');
     helpText.textContent = '내용을 입력하세요.';
     helpText.classList.add('help-text');
-    inputContainer.appendChild(helpText);
+    inputContainer.prepend(helpText);
   };
 
   this.render = (parentElement) => {

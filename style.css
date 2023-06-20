@@ -8,6 +8,7 @@
   list-style: none;
 }
 
+/* --------Body-------- */
 body {
   font-family: 'Roboto Mono', sans-serif;
   color: #4a4a4a;
@@ -26,17 +27,7 @@ body.reduce {
   grid-template-columns: 1fr 3fr; /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
-/* --------공용-------- */
-.modal-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #000000 0.3;
-}
-
-/* --------헤더-------- */
+/* --------Header-------- */
 #header-container {
   grid-area: header;
   background-color: #b2d8b6;
@@ -87,7 +78,7 @@ body.reduce {
   color: #559a5c;
 }
 
-/* --------사이드바-------- */
+/* --------Aside-------- */
 #sidebar-container {
   grid-area: sidebar;
   transform: translateX(-100%); /* 초기에 사이드바를 숨깁니다. */
@@ -99,7 +90,7 @@ body.reduce {
   transform: translateX(0%); /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
-/* --------메인-------- */
+/* --------Section-------- */
 #section-container {
   grid-area: main;
   width: 70vw;
@@ -111,10 +102,6 @@ body.reduce {
 
 .qa-container .sim-container {
   border: 1px solid rgb(154, 154, 43);
-}
-
-.input-container {
-  border: 3px solid rgb(40, 204, 229);
 }
 
 .progressbar {
@@ -131,7 +118,41 @@ body.reduce {
   transition: width 0.5s;
 }
 
-/* --------푸터-------- */
+/* --------Input-------- */
+.input-container {
+  border: 3px solid #559a5c;
+}
+
+.form {
+  height: 100%;
+  display: flex;
+}
+
+.input-field {
+  flex: 1;
+  resize: none;
+  border: 0;
+  padding: 0.5em;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.submit-btn {
+  aspect-ratio: 1/1;
+  background-color: #559a5c;
+  border: none;
+  cursor: pointer;
+}
+
+.help-text {
+  position: absolute;
+  bottom: 14vh;
+  color: #d98c8c;
+}
+
+/* --------Footer-------- */
 #footer-container {
   grid-area: footer;
 }
@@ -146,4 +167,14 @@ body.reduce {
 .footer-text {
   color: #a2a2a2;
   font-size: small;
+}
+
+/* --------Modal-------- */
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000 0.3;
 }
