@@ -118,6 +118,13 @@ body.reduce {
   transition: width 0.5s;
 }
 
+.spinner {
+  width: 5vw;
+  position: absolute;
+  left: calc(50% - 2.5vw);
+  bottom: 15vh;
+}
+
 /* --------Input-------- */
 .input-container {
   border: 3px solid #559a5c;
