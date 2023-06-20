@@ -10,7 +10,7 @@
 
 /* --------Body-------- */
 body {
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: 'Roboto', 'Noto Sans KR', sans-serif;
   color: #4a4a4a;
   background-color: #f9f9f9;
   display: grid;
@@ -67,7 +67,6 @@ body.reduce {
   text-decoration: none;
   font-size: x-large;
   font-weight: 700;
-  line-height: 1px;
 }
 
 .menu-item > a:visited {
@@ -113,6 +112,25 @@ body.reduce {
   display: none;
 }
 
+.spinner {
+  width: 5vw;
+  position: absolute;
+  left: calc(50% - 2.5vw);
+  bottom: 15vh;
+}
+
+/* --------QnA-------- */
+.user-chat-wrapper {
+  background-color: #b2d8b6;
+}
+
+.chat-text {
+  margin: 0.5em;
+  font-weight: 400;
+}
+
+/* --------Sim-------- */
+
 .progressbar {
   width: 380px;
   height: 21px;
@@ -125,13 +143,6 @@ body.reduce {
   background-color: #b2d8b6;
   border-radius: 10px;
   transition: width 0.5s;
-}
-
-.spinner {
-  width: 5vw;
-  position: absolute;
-  left: calc(50% - 2.5vw);
-  bottom: 15vh;
 }
 
 /* --------Input-------- */
