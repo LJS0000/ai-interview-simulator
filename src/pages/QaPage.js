@@ -10,7 +10,7 @@ export default function QaPage() {
     guideContainer.classList.add('guide-container');
 
     guideContainer.innerHTML = `<span>안녕하세요!</span>
-      <p>AI 인터뷰 시뮬레이터입니다.</p>
+      <h2>AI 인터뷰 시뮬레이터입니다.</h2>
       <p>면접에 대해 궁금한 점이 있으신가요?</p>
       <p>자유롭게 질문해 보세요.</p>`;
 

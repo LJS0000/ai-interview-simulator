@@ -120,8 +120,29 @@ body.reduce {
 }
 
 /* --------QnA-------- */
+.guide-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guide-container > span,
+h2 {
+  color: #559a5c;
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+.guide-container > p {
+  margin-top: 0.2em;
+  font-size: 1.2em;
+}
+
 .user-chat-wrapper {
   background-color: #b2d8b6;
+  padding: 0.1em;
+  border-radius: 3px;
 }
 
 .chat-text {
