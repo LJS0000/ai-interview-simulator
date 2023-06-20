@@ -9,6 +9,8 @@
 }
 
 body {
+  font-family: 'Roboto Mono', sans-serif;
+  color: #4a4a4a;
   background-color: #f9f9f9;
   display: grid;
   grid-template-areas:
@@ -42,22 +44,55 @@ body.reduce {
 }
 
 .navbar {
+  height: 100%;
+  padding: 0 1vw;
   display: flex;
+}
+
+.sidebar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 35px;
+}
+
+.sidebar-btn > img {
+  width: 100%;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu {
   display: flex;
+  margin-left: 2vw;
+  gap: 1vw;
 }
 
 .menu-item > a {
   text-decoration: none;
+  font-size: x-large;
+  font-weight: 700;
+  line-height: 1px;
+}
+
+.menu-item > a:visited {
+  color: #4a4a4a;
+}
+
+.menu-item > a:hover {
+  color: #559a5c;
 }
 
 /* --------사이드바-------- */
 #sidebar-container {
   grid-area: sidebar;
   transform: translateX(-100%); /* 초기에 사이드바를 숨깁니다. */
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s;
   background-color: rgb(40, 204, 229);
 }
 
