@@ -138,7 +138,7 @@ body.reduce {
   width: 5vw;
   position: absolute;
   left: calc(50% - 2.5vw);
-  bottom: 15vh;
+  bottom: 50vh;
 }
 
 /* --------QnA-------- */
