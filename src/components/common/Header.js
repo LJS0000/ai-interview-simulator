@@ -3,29 +3,29 @@ import toggleHandler from '../../module/event-handler/toggleHandler.js';
 export default function Header() {
   const navbar = document.createElement('nav');
   const sidebarBtn = document.createElement('button');
-  const logo = document.createElement('div');
+  const drawerIcon = document.createElement('img');
+  const navContainer = document.createElement('div');
   const menu = document.createElement('ul');
+  const logo = document.createElement('div');
+  const logoImg = document.createElement('img');
   const menuItems = [];
 
   this.init = () => {
     navbar.classList.add('navbar');
-    // 사이드바 햄버거 메뉴
     sidebarBtn.classList.add('sidebar-btn');
-    const drawerIcon = document.createElement('img');
-    drawerIcon.src = './src/assets/images/icon-drawer.svg';
-    sidebarBtn.appendChild(drawerIcon);
-    // 사이드바 토글 이벤트 (수정 필요)
-    sidebarBtn.addEventListener('click', toggleHandler);
-    // 헤더 로고
+    navContainer.classList.add('nav-container');
+    menu.classList.add('menu');
     logo.classList.add('logo');
-    const logoImg = document.createElement('img');
+
+    sidebarBtn.addEventListener('click', toggleHandler);
+    drawerIcon.src = './src/assets/images/icon-drawer.svg';
     logoImg.src = './src/assets/images/logo.svg';
     logoImg.alt = 'AI Interview Simulator';
-    logo.appendChild(logoImg);
-    // 헤더 메뉴
-    menu.classList.add('menu');
 
-    navbar.append(sidebarBtn, menu, logo);
+    sidebarBtn.appendChild(drawerIcon);
+    logo.appendChild(logoImg);
+    navContainer.append(menu, logo);
+    navbar.append(sidebarBtn, navContainer);
   };
 
   // 네브바에 메뉴를 추가합니다.

@@ -6,26 +6,36 @@ export default function Input() {
 
   const inputContainer = document.createElement('div');
   const form = document.createElement('form');
-  const inputField = document.createElement('input');
+  const inputField = document.createElement('textarea');
   const submitBtn = document.createElement('button');
   const submitIcon = document.createElement('img');
   const userAnswer = [];
 
+  const enterEvent = () => {
+    if (window.event.keyCode == 13) {
+      if (!event.shiftKey) {
+        qaAPI(inputField.value);
+        inputField.value = '';
+      }
+    }
+  };
+
   this.init = () => {
     inputContainer.classList.add('input-container');
+    form.classList.add('form');
     inputField.classList.add('input-field');
     submitBtn.classList.add('submit-btn');
 
-    inputField.type = 'text';
-    submitBtn.appendChild(submitIcon);
+    inputField.onkeydown = enterEvent;
     submitIcon.src = './src/assets/images/icon-submit.svg';
 
+    submitBtn.appendChild(submitIcon);
     form.append(inputField, submitBtn);
     inputContainer.appendChild(form);
   };
 
   // api 모듈에 데이터를 보냅니다.
-  this.submitHandler = () => {
+  const submitHandler = () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -44,7 +54,6 @@ export default function Input() {
         // 시뮬레이션페이지에서는 input 값을 변수에 저장합니다.
       } else if (path === '/ai-interview-simulator/simulation') {
         userAnswer.push(submitText);
-        console.log(userAnswer);
         inputField.value = '';
         simMiddleScreen.updateQuestion();
         return userAnswer;
@@ -62,7 +71,7 @@ export default function Input() {
     const helpText = document.createElement('p');
     helpText.textContent = '내용을 입력하세요.';
     helpText.classList.add('help-text');
-    inputContainer.appendChild(helpText);
+    inputContainer.prepend(helpText);
   };
 
   this.render = (parentElement) => {
@@ -70,5 +79,4 @@ export default function Input() {
   };
 
   this.init();
-  this.submitHandler();
 }

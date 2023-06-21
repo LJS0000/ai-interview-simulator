@@ -2,7 +2,6 @@ import { sectionContainer } from '../../app.js';
 /* ----- api ----- */
 import simAPI from '../../module/api/simAPI.js';
 /* -- components -- */
-import SimPage from '../../pages/SimPage.js';
 import createDropdown from './createDropdown.js';
 
 export default function SimStartScreen() {
@@ -14,7 +13,7 @@ export default function SimStartScreen() {
   const simStartBtn = document.createElement('button');
 
   const init = () => {
-    mainContainer.classList.add('main-container');
+    mainContainer.classList.add('main-sim-container');
     clockIcon.classList.add('clock-icon');
     simStartText.classList.add('sim-start-text');
     simStartForm.classList.add('sim-start-form');

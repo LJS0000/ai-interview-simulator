@@ -8,7 +8,10 @@
   list-style: none;
 }
 
+/* --------Body-------- */
 body {
+  font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+  color: #4a4a4a;
   background-color: #f9f9f9;
   display: grid;
   grid-template-areas:
@@ -18,69 +21,201 @@ body {
   grid-template-columns: 0 1fr; /* 사이드바와 메인의 너비 비율 조정합니다. */
   grid-template-rows: 9vh 1fr 4vh; /* 헤더, 메인, 푸터의 높이를 설정합니다. */
   min-height: 100vh;
-  transition: grid-template-columns 1s ease-in-out;
 }
 
 body.reduce {
   grid-template-columns: 1fr 3fr; /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
-/* --------공용-------- */
-.modal-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #000000 0.3;
-}
-
-/* --------헤더-------- */
+/* --------Header-------- */
 #header-container {
   grid-area: header;
   background-color: #b2d8b6;
 }
 
 .navbar {
+  height: 100%;
+  padding: 0 1vw;
   display: flex;
+}
+
+.sidebar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 35px;
+}
+
+.sidebar-btn > img {
+  width: 100%;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu {
   display: flex;
+  margin-left: 2vw;
+  gap: 1vw;
 }
 
 .menu-item > a {
   text-decoration: none;
+  font-size: x-large;
+  font-weight: 700;
 }
 
-/* --------사이드바-------- */
+.menu-item > a:visited {
+  color: #4a4a4a;
+}
+
+.menu-item > a:hover {
+  color: #559a5c;
+}
+
+/* --------Aside-------- */
 #sidebar-container {
   grid-area: sidebar;
   transform: translateX(-100%); /* 초기에 사이드바를 숨깁니다. */
   transition: transform 0.5s ease-in-out;
-  background-color: rgb(40, 204, 229);
+  background-color: #f2f2f2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #sidebar-container.show {
   transform: translateX(0%); /* 햄버거 메뉴 클릭 시 토글됩니다. */
 }
 
-/* --------메인-------- */
+.sidebar-text {
+  margin: 1em;
+  text-align: center;
+}
+
+.sidebar-delete-btn {
+  background: #b2d8b6;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  height: 4vh;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px -5px #000000;
+  color: #4a4a4a;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin: 0 auto;
+}
+
+/* --------Section-------- */
 #section-container {
   grid-area: main;
   width: 70vw;
   margin: 0 auto;
   display: grid;
   grid-template-rows: 1fr 10vh;
-  border: 1px solid rgb(0, 13, 255);
 }
 
-.qa-container .sim-container {
-  border: 1px solid rgb(154, 154, 43);
+.main-container {
+  height: 76vh;
+  padding: 0.5em;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; /* 스크롤을 하단 고정 */
+  -ms-overflow-style: none; /* 스크롤 - 인터넷 익스플로러 */
+  scrollbar-width: none; /* 스크롤 - 파이어폭스 */
+}
+/* 스크롤 - 크롬, 사파리, 오페라, 엣지 */
+.main-container::-webkit-scrollbar {
+  display: none;
 }
 
-.input-container {
-  border: 3px solid rgb(40, 204, 229);
+.spinner {
+  width: 5vw;
+  position: absolute;
+  left: calc(50% - 2.5vw);
+  bottom: 50vh;
+}
+
+/* --------QnA-------- */
+.guide-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guide-container > span,
+h2 {
+  color: #559a5c;
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+.guide-container > p {
+  margin-top: 0.2em;
+  font-size: 1.2em;
+}
+
+.user-chat-wrapper {
+  background-color: #b2d8b6;
+  padding: 0.1em;
+  border-radius: 3px;
+}
+
+.chat-text {
+  margin: 0.5em;
+  font-weight: 400;
+}
+
+/* --------Sim-------- */
+.main-sim-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-icon {
+  width: 80px;
+}
+
+.sim-start-text {
+  margin: 0.5em 0;
+}
+
+.sim-start-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.sim-start-dropdown {
+  height: 2em;
+  padding: 0 5px;
+}
+
+.sim-start-btn {
+  background-color: #559a5c;
+  color: #ffffff;
+  height: 2em;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+.progressbar-container {
+  position: absolute;
+  top: 20vh;
+}
+
+.progress-text {
+  text-align: right;
+  color: #a2a2a2;
+  font-weight: 300;
 }
 
 .progressbar {
@@ -97,10 +232,72 @@ body.reduce {
   transition: width 0.5s;
 }
 
-/* --------푸터-------- */
+.timer-container {
+  position: absolute;
+  top: 28vh;
+  width: 160px;
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+}
+
+.timer-icon {
+  width: 30px;
+}
+
+.timer-text {
+  font-size: 3em;
+  font-weight: 700;
+  color: #559a5c;
+}
+
+.question-text {
+  width: 75vw;
+  margin: 0 auto;
+  position: absolute;
+  top: 55vh;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+/* --------Input-------- */
+.input-container {
+  height: 10vh;
+  border: 3px solid #559a5c;
+}
+
+.form {
+  height: 100%;
+  display: flex;
+}
+
+.input-field {
+  flex: 1;
+  resize: none;
+  border: 0;
+  padding: 0.5em;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.submit-btn {
+  aspect-ratio: 1/1;
+  background-color: #559a5c;
+  border: none;
+  cursor: pointer;
+}
+
+.help-text {
+  position: absolute;
+  bottom: 14vh;
+  color: #d98c8c;
+}
+
+/* --------Footer-------- */
 #footer-container {
   grid-area: footer;
-  border: 1px solid rgb(220, 11, 11);
 }
 
 .footer-text-wrapper {
@@ -108,4 +305,19 @@ body.reduce {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-text {
+  color: #a2a2a2;
+  font-size: small;
+}
+
+/* --------Modal-------- */
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000 0.3;
 }

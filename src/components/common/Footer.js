@@ -7,7 +7,7 @@ export default function Footer() {
     footerText.classList.add('footer-text');
 
     footerText.textContent =
-      'Copyright 2023. 이지수 All pictures cannot be copied without permission';
+      'Copyright 2023. Jisu Lee All pictures cannot be copied without permission';
 
     footerTextWrapper.appendChild(footerText);
   };
