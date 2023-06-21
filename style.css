@@ -173,6 +173,39 @@ h2 {
 }
 
 /* --------Sim-------- */
+.main-sim-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-icon {
+  width: 80px;
+}
+
+.sim-start-text {
+  margin: 0.5em 0;
+}
+
+.sim-start-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.sim-start-dropdown {
+  height: 2em;
+  padding: 0 5px;
+}
+
+.sim-start-btn {
+  background-color: #559a5c;
+  color: #ffffff;
+  height: 2em;
+  padding: 0 5px;
+  border-radius: 10px;
+}
 
 .progressbar {
   width: 380px;
