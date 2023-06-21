@@ -1,10 +1,11 @@
 # 👔 AI Interview Simulator V1.0.0
 
-이 프로젝트는 사용자가 질문에 대답하여 면접을 시뮬레이션할 수 있는 간단한 웹 페이지입니다!
-1.0.0 버전은 라이브러리나 프레임워크 없이 Vanilla JavaScript, pure CSS, HTML을 사용해 구현했습니다.
+이 프로젝트는 사용자가 모의면접을 진행하거나 면접 관련 질문을 할 수 있는 웹 서비스입니다!
+라이브러리나 프레임워크 없이 Vanilla JavaScript, pure CSS, HTML을 사용해 구현했습니다.
 
-- [Interview Simulator 경험하기](https://ljs0000.github.io/ai-interview-simulator/)
-- [프로젝트 Notion](https://www.notion.so/career-ljs-develope/HTML-CSS-JavaScript-chatGPT-a56b424edd44470c9946553dd86d8269)
+### [📌 AI Interview Simulator 경험하기](https://ljs0000.github.io/ai-interview-simulator/)
+
+### [📌 프로젝트 Notion](https://www.notion.so/career-ljs-develope/HTML-CSS-JavaScript-chatGPT-a56b424edd44470c9946553dd86d8269)
 
 ## 1. 기술스택:
 
@@ -21,17 +22,59 @@
 
 ## 4. 폴더 구조:
 
-프로젝트의 폴더 구조는 다음과 같습니다:
+프로젝트의 폴더 구조는 다음과 같습니다.
 
-## 5. 사용 방법:
+## 6. 코드컨벤션:
+
+- 일반함수명: 카멜케이스를 사용합니다.
+  - 예: `myComponent()`
+- 생성자함수명: 파스칼케이스를 사용합니다.
+  - 예: `MyComponent()`
+- 변수명: 카멜케이스를 사용합니다.
+  - 예: `orderCount, customerName`
+- 약어: 다음 항목은 약어를 사용합니다.
+  - response > `res`
+  - error > `err`
+  - button > `btn`
+  - image > `img`
+  - simulation > `sim`
+- 컴포넌트 선언: 함수 선언식을 사용합니다.
+  - 예:
+
+```js
+function myComponent() {
+  // ...
+}
+```
+
+- 컴포넌트 내부 함수: 화살표함수를 사용합니다.
+  - 예:
+
+```js
+function component() {
+  const innerFunc = () => {
+    // ...
+  };
+}
+```
+
+- 단일 함수 export: 파일명은 해당 함수와 동일하게 설정합니다.
+  - 예: `myComponent.js` 파일은 `myComponent` 함수만을 export합니다.
+- 폴더명: 케밥 케이스를 사용합니다.
+  - 예: `module, my-folder`
+
+## 7. 사용 방법:
+
+다음 주소에 접속합니다.
+
+- https://ljs0000.github.io/ai-interview-simulator/
 
 로컬 환경에서 프로젝트를 사용하려면...
 
-1. 저장소를 클론하거나 프로젝트 파일을 다운로드합니다.
-2. 웹 브라우저에서 `index.html` 파일을 엽니다.
-3. 페이지에 표시된 면접 질문에 대답합니다.
-4. 사용자의 응답은 로컬 스토리지에 저장됩니다.
+1. 현재 리포지토리를 클론하거나 프로젝트 파일을 다운로드합니다.
+2. `$ npm run dev` 로컬 서버 실행 명령어를 입력합니다.
+3. 사용자의 응답은 로컬 스토리지에 저장됩니다.
 
-## 6. 참고:
+## 8. 참고:
 
 - [와이어프레임](https://www.figma.com/file/yPERhU87MgpDX1OraeOBUP/AI-Interview-Simulator?type=design&node-id=0-1&t=wz4Yphp5InF07tRE-0)
