@@ -14,7 +14,8 @@ export default function Input() {
   const enterEvent = () => {
     if (window.event.keyCode == 13) {
       if (!event.shiftKey) {
-        submitHandler();
+        qaAPI(inputField.value);
+        inputField.value = '';
       }
     }
   };
@@ -35,8 +36,7 @@ export default function Input() {
 
   // api 모듈에 데이터를 보냅니다.
   const submitHandler = () => {
-    console.log(form);
-    form.addEventListener('input', (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const submitText = inputField.value.trim();
