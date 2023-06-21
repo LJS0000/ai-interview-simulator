@@ -82,11 +82,33 @@ body.reduce {
   grid-area: sidebar;
   transform: translateX(-100%); /* 초기에 사이드바를 숨깁니다. */
   transition: transform 0.5s ease-in-out;
-  background-color: rgb(40, 204, 229);
+  background-color: #f2f2f2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #sidebar-container.show {
   transform: translateX(0%); /* 햄버거 메뉴 클릭 시 토글됩니다. */
+}
+
+.sidebar-text {
+  margin: 1em;
+  text-align: center;
+}
+
+.sidebar-delete-btn {
+  background: #b2d8b6;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  height: 4vh;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px -5px #000000;
+  color: #4a4a4a;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin: 0 auto;
 }
 
 /* --------Section-------- */
