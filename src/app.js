@@ -1,7 +1,7 @@
 /* -- components -- */
 import Router from './router/Router.js';
 import Header from './components/common/Header.js';
-import Sidebar from './components/common/sidebar.js';
+import Sidebar from './components/common/Sidebar.js';
 import QaPage from './pages/QaPage.js';
 import SimPage from './pages/SimPage.js';
 import Input from './components/common/Input.js';
