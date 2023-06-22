@@ -17,6 +17,7 @@ export default function Timer() {
     timerContainer.append(timerIcon, timerText);
   };
 
+  /* xx:xx 형식으로 시간이 표기되는 타이머 */
   const decreaseTime = () => {
     if (seconds <= 0 && milliseconds <= 0) {
       clearInterval(timerId);
@@ -32,12 +33,14 @@ export default function Timer() {
     }
   };
 
+  /* 타이머 시작 */
   this.start = () => {
     seconds = 80;
     milliseconds = 0;
     timerId = setInterval(decreaseTime, 10);
   };
 
+  /* 타이머 종료 */
   this.stop = () => {
     clearInterval(timerId);
   };

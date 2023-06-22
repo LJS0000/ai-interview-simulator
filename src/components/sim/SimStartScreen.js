@@ -1,3 +1,4 @@
+/* - querySelector 변수 - */
 import { sectionContainer } from '../../app.js';
 /* ----- api ----- */
 import simAPI from '../../module/api/simAPI.js';
@@ -43,7 +44,7 @@ export default function SimStartScreen() {
     });
   };
 
-  // api 모듈에 데이터를 보냅니다.
+  /* api 모듈에 데이터를 보냅니다. */
   const submitHandler = () => {
     simStartForm.addEventListener('submit', (e) => {
       e.preventDefault();

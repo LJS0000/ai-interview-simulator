@@ -4,7 +4,6 @@ import API_ENDPOINT from '../../configs/apiConfig.js';
 import qaPrompt from '../../constants/qaPrompt.js';
 import { sectionContainer } from '../../app.js';
 /* -- components -- */
-import QaPage from '../../pages/QaPage.js';
 import spinner from '../../components/common/spinner.js';
 
 export default function qaAPI(submitText) {
