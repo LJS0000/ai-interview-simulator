@@ -1,3 +1,4 @@
+/* -- components -- */
 import Router from './router/Router.js';
 import Header from './components/common/Header.js';
 import Sidebar from './components/common/sidebar.js';

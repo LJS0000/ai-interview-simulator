@@ -1,4 +1,5 @@
-import options from '../../constants/dropdownOptions.js';
+/* -- constants -- */
+import options from '../../constants/dropdownOptions.js'; /* -- constants -- */
 
 export default function createDropdown() {
   const dropdown = document.createElement('select');

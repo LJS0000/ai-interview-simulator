@@ -14,6 +14,10 @@ export default function Progressbar() {
     progressContainer.append(progressText, progressbar);
   };
 
+  /**
+   * 3단계 프로그래스바
+   * @param {int} step
+   */
   this.updateProgress = (step) => {
     progressText.textContent = `${step}/3`;
 

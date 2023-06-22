@@ -1,9 +1,8 @@
+/* - querySelector 변수 - */
 import { sectionContainer } from '../../app.js';
+/* -- components -- */
 import Progressbar from './Progressbar.js';
 import Timer from './Timer.js';
-import button from '../common/button.js';
-import Modal from '../common/Modal.js';
-import toggleHandler from '../../module/event-handler/toggleHandler.js';
 
 export default function SimMiddleScreen() {
   const progressbar = new Progressbar();
@@ -26,6 +25,10 @@ export default function SimMiddleScreen() {
     mainContainer.append(questionText);
   };
 
+  /**
+   * 불러온 질문을 화면에 모두 리렌더링하고, 타이머를 종료합니다.
+   * @param {object} simQuestionList
+   */
   this.updateQuestion = (simQuestionList) => {
     if (step > simQuestionList.length - 1) {
       // 모든 질문을 마친 경우에 대한 처리
@@ -41,6 +44,8 @@ export default function SimMiddleScreen() {
     timer.start();
     step += 1;
     progressbar.updateProgress(step);
+
+    /* 타이머 시간 + 0.5초로 질문을 업데이트합니다. */
     setTimeout(() => {
       this.updateQuestion(simQuestionList);
     }, 80500); // 80.5초의 지연

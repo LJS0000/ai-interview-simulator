@@ -1,3 +1,4 @@
+/* -  eventHanler module - */
 import toggleHandler from '../../module/event-handler/toggleHandler.js';
 
 export default function Header() {
@@ -28,7 +29,11 @@ export default function Header() {
     navbar.append(sidebarBtn, navContainer);
   };
 
-  // 네브바에 메뉴를 추가합니다.
+  /**
+   * 네비게이션바에 메뉴를 추가합니다.
+   * @param {string} label
+   * @param {string} url
+   */
   this.addMenuItem = (label, url) => {
     const menuItem = document.createElement('li');
     menuItem.classList.add('menu-item');
